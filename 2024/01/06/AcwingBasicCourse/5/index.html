@@ -16,19 +16,21 @@
   <meta name="author" content="tianfang">
   <meta name="keywords" content="">
   
-    <meta property="og:type" content="website">
-<meta property="og:title" content="关于">
-<meta property="og:url" content="http://example.com/about/index.html">
+    <meta name="description" content="归并排序的步骤分为  先将序列等分为两个小序列 再递归处理小序列，两个小序列此时有序 将两个小序列合并，使得整个序列合并  其核心点在于如何合并小序列。  创建一个temps数组，来暂时存储合并后的结果 不断找到两个小序列的还未处理的最小元素，将其放到temps数组。注意到两个序列都已经排好序，两个序列的最小未处理元素必然在左边（第一个序列是l，第二个序列是m+1）。直到有一边用完为止 此时，在二">
+<meta property="og:type" content="article">
+<meta property="og:title" content="5. 归并排序与求逆序对数量">
+<meta property="og:url" content="http://example.com/2024/01/06/AcwingBasicCourse/5/index.html">
 <meta property="og:site_name" content="tianfang&#39;s blog">
+<meta property="og:description" content="归并排序的步骤分为  先将序列等分为两个小序列 再递归处理小序列，两个小序列此时有序 将两个小序列合并，使得整个序列合并  其核心点在于如何合并小序列。  创建一个temps数组，来暂时存储合并后的结果 不断找到两个小序列的还未处理的最小元素，将其放到temps数组。注意到两个序列都已经排好序，两个序列的最小未处理元素必然在左边（第一个序列是l，第二个序列是m+1）。直到有一边用完为止 此时，在二">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-01-05T14:53:37.000Z">
-<meta property="article:modified_time" content="2024-01-05T14:54:30.076Z">
+<meta property="article:published_time" content="2024-01-05T16:52:55.284Z">
+<meta property="article:modified_time" content="2024-01-07T01:04:39.088Z">
 <meta property="article:author" content="tianfang">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>关于 - tianfang&#39;s blog</title>
+  <title>5. 归并排序与求逆序对数量 - tianfang&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -88,7 +90,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 60vh;">
+<div class="header-inner" style="height: 70vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -194,9 +196,49 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="关于"></span>
+            <span id="subtitle" data-typed-text="5. 归并排序与求逆序对数量"></span>
           
         </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-01-06 00:52" pubdate>
+          2024年1月6日 凌晨
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          582 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          5 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
 
         
       </div>
@@ -212,75 +254,155 @@
 
   <main>
     
-      <div class="container nopadding-x-md">
-        <div id="board"
-          >
-          
-            <div class="about-avatar">
-              <img src="/img/avatar.png" srcset="/img/loading.gif" lazyload class="img-fluid" alt="avatar">
-            </div>
-          
-          <div class="container">
-            <div class="row">
-              <div class="col-12 col-md-10 m-auto">
-                
+      
 
-<div class="text-center">
-  <div class="about-info">
-    <div class="about-name">Fluid</div>
-    <div class="about-intro">An elegant theme for Hexo</div>
-    <div class="about-icons">
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
       
-        
-        
-        
-        <a href=https://github.com class="
-           hint--bottom hint--rounded"
-           aria-label=GitHub
-           target="_blank"
-        >
-          <i class="iconfont icon-github-fill" aria-hidden="true"></i>
-          
-        </a>
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">5. 归并排序与求逆序对数量</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <p>归并排序的步骤分为</p>
+<ol>
+<li>先将序列等分为两个小序列</li>
+<li>再递归处理小序列，两个小序列此时有序</li>
+<li>将两个小序列合并，使得整个序列合并</li>
+</ol>
+<p>其核心点在于如何合并小序列。</p>
+<ol>
+<li>创建一个temps数组，来暂时存储合并后的结果</li>
+<li>不断找到两个小序列的还未处理的最小元素，将其放到temps数组。注意到两个序列都已经排好序，两个序列的最小未处理元素必然在左边（第一个序列是l，第二个序列是m+1）。直到有一边用完为止</li>
+<li>此时，在二个序列中，至多只有一个序列有元素，而且是有序的，所以从左到右将未处理的元素放到小序列即可。</li>
+<li>最后将temps数组的结果放到原序列中。</li>
+</ol>
+<p>归并排序可以用来求逆序对的数量</p>
+<p>我们依然将序列等分为两个小序列，整个序列的逆序对 &#x3D; 左边序列中的逆序对 + 右边序列的逆序对 + 左边序列中的数字与右边序列中的数字产生的逆序对。</p>
+<p>因此逆序对求解可分为以下步骤</p>
+<ol>
+<li>求左边序列的逆序对和右边序列的逆序对（归并排序并求两个序列的逆序对）</li>
+</ol>
+<p>注意到左边序列和右边序列改变顺序，并不会影响左边序列中的数字与右边序列中的数字产生的逆序对的数量。所以可以对左边序列和右边序列进行排序后，再求左边序列中的数字与右边序列中的数字产生的逆序对的数量。</p>
+<p>2. 求左边序列中的数字与右边序列中的数字产生的逆序对的数量</p>
+<p>归并排序的合并过程中，合并时需要不断找到未处理的最小元素。若最小元素出现在左序列，则表明左序列的未处理的元素均小于右序列的未处理元素，不构成逆序对。若最小元素出现右序列，则左序列未处理的所有元素均小于右序列的所有未处理元素，构成逆序对。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>5. 归并排序与求逆序对数量</div>
+      <div>http://example.com/2024/01/06/AcwingBasicCourse/5/</div>
+    </div>
+    <div class="license-meta">
       
-        
-        
-        
-        <a href=https://douban.com class="
-           hint--bottom hint--rounded"
-           aria-label=豆瓣
-           target="_blank"
-        >
-          <i class="iconfont icon-douban-fill" aria-hidden="true"></i>
-          
-        </a>
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tianfang</div>
+        </div>
       
-        
-        
-        
-        <a  class="qr-trigger
-           "
-           
-           target="_self"
-        >
-          <i class="iconfont icon-wechat-fill" aria-hidden="true"></i>
-          
-            <img class="qr-img" src="/img/favicon.png" srcset="/img/loading.gif" lazyload alt="qrcode" />
-          
-        </a>
       
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年1月6日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                      <a href="/2024/01/06/AcwingBasicCourse/4/" title="4. QUICKSORT">
+                        <i class="iconfont icon-arrowleft"></i>
+                        <span class="hidden-mobile">4. QUICKSORT</span>
+                        <span class="visible-mobile">上一篇</span>
+                      </a>
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                      <a href="/2024/01/06/AcwingBasicCourse/2/" title="2. 高精度整数">
+                        <span class="hidden-mobile">2. 高精度整数</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
     </div>
   </div>
 </div>
 
-<article class="about-content page-content mt-5">
-  <div class="markdown-body">
-    
-  </div>
-
-  
-</article>
-
 
 
 
@@ -307,11 +429,8 @@
 
 
 
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+
+
     
 
     
@@ -404,6 +523,46 @@
   
 
 
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
 
 
   <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>

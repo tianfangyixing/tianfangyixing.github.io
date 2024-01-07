@@ -17,8 +17,8 @@
   <meta name="keywords" content="">
   
     <meta property="og:type" content="website">
-<meta property="og:title" content="标签">
-<meta property="og:url" content="http://example.com/tags/index.html">
+<meta property="og:title" content="tianfang&#39;s blog">
+<meta property="og:url" content="http://example.com/page/2/index.html">
 <meta property="og:site_name" content="tianfang&#39;s blog">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:author" content="tianfang">
@@ -26,7 +26,7 @@
   
   
   
-  <title>标签 - tianfang&#39;s blog</title>
+  <title>tianfang&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -80,7 +80,7 @@
   <header>
     
 
-<div class="header-inner" style="height: 80vh;">
+<div class="header-inner" style="height: 100vh;">
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
@@ -186,7 +186,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="标签"></span>
+            <span id="subtitle" data-typed-text="An elegant Material-Design theme for Hexo"></span>
           
         </div>
 
@@ -210,16 +210,254 @@
     
       <div class="container nopadding-x-md">
         <div id="board"
-          >
+          style="margin-top: 0">
           
           <div class="container">
             <div class="row">
               <div class="col-12 col-md-10 m-auto">
                 
 
-<div class="text-center tagcloud">
-  
-</div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/07/AcwingBasicCourse/7/" target="_self">
+          7. 区间合并
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/AcwingBasicCourse/7/" target="_self">
+        <div>
+          题目：给定 n 个区间 [l,r] ，要求合并所有有交集的区间。 注意如果在端点处相交，也算有交集。 输出合并完成后的区间个数。 数据范围： 1≤n≤100000, −109≤l≤r≤109 先对这n个区间进行排序（先根据l从小到大，若相等再根据r的大小进行排序）。在排序完后，则可以合并的区间必然在相邻位置，是连在一起的。因此，我们从第一个区间开始向右合并区间，其得到的区间必然不可再合并。设正在合
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-07 09:04" pubdate>
+              2024-01-07
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/07/AcwingBasicCourse/6/" target="_self">
+          6. 区间和（离散化）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/AcwingBasicCourse/6/" target="_self">
+        <div>
+          问题：假定有一个无限长的数轴，数轴上每个坐标上的数都是0 。 现在，我们首先进行 n 次操作，每次操作将某一位置 x 上的数加 c 。 接下来，进行 c 次询问，每个询问包含两个整数 l 和 r ，你需要求出在区间 [l,r] 之间的所有数的和。 数据范围： −10^9≤x≤10^9，1≤n,m≤10^5，−10^9≤l≤r≤10^9，−10000≤c≤10000 这道题显然不能直接用数组进行存储
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-07 09:04" pubdate>
+              2024-01-07
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/06/AcwingBasicCourse/3/" target="_self">
+          3. 前缀和与差分
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/06/AcwingBasicCourse/3/" target="_self">
+        <div>
+          问题1：输入一个长度为n的整数序列。接下来再输入m个询问，每个询问输入一对l,r。对于每个询问，输出原序列中从第l个数到第r个数的和。 如果直接暴力求解，注意到在m次查询中，会对某些元素进行重复的求和。 不妨构造前缀和数组 presum[n] &#x3D; nums[1]+nums[2]+…+nums[n]，第l个数到第r个数的和可化为presum[r] - presum[l-1]。那么问题的求解
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-06 00:52" pubdate>
+              2024-01-06
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/06/AcwingBasicCourse/4/" target="_self">
+          4. QUICKSORT
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/06/AcwingBasicCourse/4/" target="_self">
+        <div>
+          若一些数可以分为两个连续的部分，满足性质的部分和不满足性质部分，则我们称这些数具有二段性，那么我们就可以进行二分搜索。
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-06 00:52" pubdate>
+              2024-01-06
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/06/AcwingBasicCourse/5/" target="_self">
+          5. 归并排序与求逆序对数量
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/06/AcwingBasicCourse/5/" target="_self">
+        <div>
+          归并排序的步骤分为  先将序列等分为两个小序列 再递归处理小序列，两个小序列此时有序 将两个小序列合并，使得整个序列合并  其核心点在于如何合并小序列。  创建一个temps数组，来暂时存储合并后的结果 不断找到两个小序列的还未处理的最小元素，将其放到temps数组。注意到两个序列都已经排好序，两个序列的最小未处理元素必然在左边（第一个序列是l，第二个序列是m+1）。直到有一边用完为止 此时，在二
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-06 00:52" pubdate>
+              2024-01-06
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/06/AcwingBasicCourse/2/" target="_self">
+          2. 高精度整数
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/06/AcwingBasicCourse/2/" target="_self">
+        <div>
+          问题1：高精度整数如何存储的呢？ 数组存储着各个位上的数，数组的第一位置存储着个位，第二位置存储着十位，以此类推。 问题2：高精度整数如何进行输入与输出？ 读取输入的字符串，因为存储高精度整数数组第一个位置要存储个位，而字符串是从数的高位开始输出，则要从字符串的最后一位开始读起。 123for(int i = num_str.size() - 1; i &gt;= 0; i--) &#123;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-06 00:52" pubdate>
+              2024-01-06
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/06/AcwingBasicCourse/1/" target="_self">
+          1. 整数二分
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/06/AcwingBasicCourse/1/" target="_self">
+        <div>
+          若一些数可以分为两个连续的部分，满足性质的部分和不满足性质部分，则我们称这些数具有二段性，那么我们就可以进行二分搜索。 对于一个升序或降序的数组，该数组必然满足二段性。例如，1 2 2 3 3 5 问题1: 在一个升序数列中，如何得到某个数的开始位置 升序数列必然可以分为两个部分，左边是不满足性质（不满足大于等于x），右边是满足性质（大于等于x的）。那么我们可以用整数二分得到满足性质的起始位置。但
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-06 00:51" pubdate>
+              2024-01-06
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+
+
+  <nav aria-label="navigation">
+    <span class="pagination" id="pagination">
+      <a class="extend prev" rel="prev" href="/"><i class="iconfont icon-arrowleft"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    </span>
+  </nav>
+
+
 
               </div>
             </div>
