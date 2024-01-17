@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
+<html lang="zh-CN" >
 
 
 
@@ -24,7 +24,7 @@
 <meta property="og:description" content="我们讲讲队列的数组实现。在算法竞赛中，为了快速写出队列，允许队列浪费空间。我们可以这样写 12345678910111213141516171819202122232425const int N &#x3D; 100010;int front, rear;int datas[N];void init() &amp;#123;    front &#x3D; 0;    rear &#x3D; -1;&amp;#125;void pop() &amp;">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-07T02:10:38.043Z">
-<meta property="article:modified_time" content="2024-01-07T02:11:54.908Z">
+<meta property="article:modified_time" content="2024-01-13T18:18:26.772Z">
 <meta property="article:author" content="tianfang">
 <meta name="twitter:card" content="summary_large_image">
   
@@ -59,8 +59,6 @@
 
   <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
 
 
 
@@ -94,7 +92,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>tianfang&#39;s Blog</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -175,12 +173,6 @@
           </li>
           
         
-        
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
         
       </ul>
     </div>
@@ -273,23 +265,23 @@
               <div class="markdown-body">
                 
                 <p>我们讲讲队列的数组实现。在算法竞赛中，为了快速写出队列，允许队列浪费空间。我们可以这样写</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs text">const int N = 100010;<br><br>int front, rear;<br>int datas[N];<br><br>void init() &#123;<br>    front = 0;<br>    rear = -1;<br>&#125;<br><br>void pop() &#123;<br>    front++;<br>&#125;<br><br>void push(int x) &#123;<br>    datas[++rear] = x;<br>&#125;<br><br>bool empty() &#123;<br>    return front &gt; rear;<br>&#125;<br><br>int front() &#123;<br>    return datas[front];<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">100010</span>;<br><br><span class="hljs-type">int</span> front, rear;<br><span class="hljs-type">int</span> datas[N];<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">init</span><span class="hljs-params">()</span> </span>&#123;<br>    front = <span class="hljs-number">0</span>;<br>    rear = <span class="hljs-number">-1</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123;<br>    front++;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;<br>    datas[++rear] = x;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">empty</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> front &gt; rear;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">front</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> datas[front];<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>这个写法较为简单，不过多赘述。如果我们有时间，我们可以用不浪费空间的一种数组实现方式。这种方式就是循环队列。存在一种情况：front达到size-2，rear达到size-1，此时该队列假满，还有许多空间没有被使用。此时，如果继续push，往data[rear+1]放数据，必然越界。怎么办呢？我们可以让它回到原点即0，继续使用。即rear &#x3D; (rear + 1) % N，front也是做这样的运算。</p>
 <p>那么用这种方式，该如何判定队列的大小呢？看front-rear的绝对值，但是它只有N种情况，但是队列大小有N+1种情况，所以无法判定队列大小。</p>
 <p>此时我们可以这样做，那就是规定(rear + 1) % size &#x3D; front为满，这也就意味着队列中永远有一个元素没有办法被用到，队列实际最大容量为N-1，</p>
 <p>规定front&#x3D;rear&#x3D;0为初始情况，front指向的是有元素的前面一个区域，永远指向无元素的区域，当队列大小大于0时，rear指向最后一个元素的下标。队列最大大小为maxLength，则数组大小为N &#x3D; maxLength + 1</p>
 <p>队列为空：有规定知，rear&#x3D;&#x3D;front</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">bool isEmpty() &#123;<br>   return rear == front;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isEmpty</span><span class="hljs-params">()</span> </span>&#123;<br>   <span class="hljs-keyword">return</span> rear == front;<br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>队列已满：rear先前走一步与front相等</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs text">bool isFull() &#123;<br>    return (rear + 1) % N == front; // N代表数组的大小<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isFull</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">return</span> (rear + <span class="hljs-number">1</span>) % N == front; <span class="hljs-comment">// N代表数组的大小</span><br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>获得队列长度（结合具体例子去想，元素为空，元素为满的情况）</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs text">int getLength() &#123;<br>    int l = (rear - front);<br>         <br>    return (l &gt;= 0) ? l : (l + N + 1); <br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">getLength</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-type">int</span> l = (rear - front);<br>         <br>    <span class="hljs-keyword">return</span> (l &gt;= <span class="hljs-number">0</span>) ? l : (l + N + <span class="hljs-number">1</span>); <br>&#125;<br></code></pre></td></tr></table></figure>
 
 <p>push和pop操作</p>
-<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs text">void push(int x) &#123;<br>    if(isFull()) &#123;<br>        cout &lt;&lt; &quot;FULL&quot; &lt;&lt; endl;<br>        return;<br>    &#125;<br><br>    rear = (rear + 1) % N;<br>    datas[rear] = x;<br>&#125;<br><br>void pop() &#123;<br>    if(isEmpty()) &#123;<br>        cout &lt;&lt; &quot;Empty&quot; &lt;&lt; endl;<br>        return;<br>    &#125;<br><br>    front = (front + 1) % N;<br>&#125;<br></code></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">push</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">isFull</span>()) &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;FULL&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br><br>    rear = (rear + <span class="hljs-number">1</span>) % N;<br>    datas[rear] = x;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">pop</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">isEmpty</span>()) &#123;<br>        cout &lt;&lt; <span class="hljs-string">&quot;Empty&quot;</span> &lt;&lt; endl;<br>        <span class="hljs-keyword">return</span>;<br>    &#125;<br><br>    front = (front + <span class="hljs-number">1</span>) % N;<br>&#125;<br></code></pre></td></tr></table></figure>
                 
               </div>
             

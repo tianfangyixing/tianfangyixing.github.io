@@ -1,7 +1,7 @@
 
 
 <!DOCTYPE html>
-<html lang="zh-CN" data-default-color-scheme=auto>
+<html lang="zh-CN" >
 
 
 
@@ -49,8 +49,6 @@
 
   <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
   
-    <link id="highlight-css-dark" rel="stylesheet" href="/css/highlight-dark.css" />
-  
 
 
 
@@ -84,7 +82,7 @@
   <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
   <div class="container">
     <a class="navbar-brand" href="/">
-      <strong>Fluid</strong>
+      <strong>tianfang&#39;s Blog</strong>
     </a>
 
     <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
@@ -166,12 +164,6 @@
           
         
         
-          <li class="nav-item" id="color-toggle-btn">
-            <a class="nav-link" target="_self" href="javascript:;" aria-label="Color Toggle">
-              <i class="iconfont icon-dark" id="color-toggle-icon"></i>
-            </a>
-          </li>
-        
       </ul>
     </div>
   </div>
@@ -217,6 +209,39 @@
               <div class="col-12 col-md-10 m-auto">
                 
 
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/17/AcwingBasicCourse/math1/" target="_self">
+          18. 质数
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/17/AcwingBasicCourse/math1/" target="_self">
+        <div>
+          质数是指只有2个因子并且大于或等于2的数 判断一个数是否为质数暴力做法遍历2到x-1的每一个数，看这些数是否是它的因子，即判断是否能够整除，如果碰到能整除的数，则不是质数。如果都不能整除，则是质数。 12345678910111213bool isPrime(int x) &#123;    if(x == 1) &#123;        return false;    &#125;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-17 23:38" pubdate>
+              2024-01-17
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
 
   <div class="row mx-auto index-card">
     
@@ -364,7 +389,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/AcwingBasicCourse/13/" target="_self">
         <div>
-          sd
+          E=mc^2 hash(str) = str[0] \times P^{n-1} + str[1] \times P^{n-2} + ... + str[n-1] \times P^{0}
         </div>
       </a>
 
@@ -497,39 +522,6 @@
       <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/AcwingBasicCourse/9/" target="_self">
         <div>
           链表可以用指针来实现，较为简单熟悉，这里不再赘述。但是，指针实现每次插入和删除都要调用malloc和free函数，而这来回从用户态切换到内核态，极其消耗时间，所以写算法题一般我们不用指针实现的链表，而是用数组实现。（当然可以使用内存分配器减少切换内核态的次数） 用指针实现的链表数据结构是这样的，并且有用到内存分配函数，这就启发我们：如果要是要数组实现，也要有对于的存储结构来存储next，分配内存，
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-07 09:04" pubdate>
-              2024-01-07
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/07/AcwingBasicCourse/8/" target="_self">
-          8. 双指针算法
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/AcwingBasicCourse/8/" target="_self">
-        <div>
-          题目：给定一个长度为 n 的整数序列，请找出最长的不包含重复的数的连续区间，输出它的长度。 这个问题可以进行暴力求解，i为起点，j为终点 1234567for(int j = 0; i &lt; n; j++) &#123;    for(int i = 0; i &lt;= j; i++) &#123;        if(check(numbers, i, j)) &#123;
         </div>
       </a>
 
