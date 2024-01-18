@@ -211,7 +211,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          710 字
+          200 字
         
       </span>
     
@@ -222,7 +222,7 @@
         
         
         
-          6 分钟
+          2 分钟
         
       </span>
     
@@ -267,20 +267,16 @@
                 <p><strong>题目</strong>：给定一个长度为 n 的整数序列，请找出最长的不包含重复的数的连续区间，输出它的长度。</p>
 <p>这个问题可以进行暴力求解，i为起点，j为终点</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; i &lt; n; j++) &#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt;= j; i++) &#123;<br>        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">check</span>(numbers, i, j)) &#123;<br>            maxLength = <span class="hljs-built_in">max</span>(maxLength, j - i + <span class="hljs-number">1</span>)<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p>其时间复杂度为 O(N^2) ，注意到进行了很多重复的运算。我们看是否存在单调性，令i为使得[i,j]为最长序列的值，显然单调性为j向右移动，则i必然向右动或者不动，不可能往左动。</p>
-<p>即当 j &#x3D; k 时，最长序列为 [i_{k}, k] ，那么当 j&#x3D; k + 1 ,必然满足 i_{k+1} &gt;&#x3D; i_{k} 。因为如果 i_{k+1} &lt;i_{k} ，则说明 [i_{k} - n, k ] 不存在重复数字，而上一步求解的 [i_{k}, k] 说明 [i_{k} - 1, k ] 必然存在重复元素，二者矛盾，则 i_{k+1} &lt; i{k} 不成立，故 i_{k+1} &gt;&#x3D; i_{k} 。</p>
+<p>即当 j = k 时，最长序列为 [i_{k}, k] ，那么当 j= k + 1 ,必然满足 i_{k+1} &gt;= i_{k} 。因为如果 i_{k+1} <i\_{k} ，则说明 \[i\_{k} - n, k \] 不存在重复数字，而上一步求解的 \[i\_{k}, k\] 说明 \[i\_{k} - 1, k \] 必然存在重复元素，二者矛盾，则 i\_{k+1} < i{k} 不成立，故 i\_{k+1} >= i_{k} 。</p>
 <p>因此i只需要往右运动，不需要回溯，就可以完成对问题的求解。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>; j &lt; n; j++) &#123;<br>    <span class="hljs-keyword">while</span>(!<span class="hljs-built_in">check</span>(numbers, i, j)) &#123;<br>        i++;<br>    &#125;<br>        <br>    maxLength = <span class="hljs-built_in">max</span>(maxLength, j - i + <span class="hljs-number">1</span>)<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p>其中，check()这样写耗时较少。开辟一个数组，记录在最长序列中数据出现的次数，在i和j移动过程中，不断进行更新。若j向右移动，则新加入的这个数字出现次数加1，则此时该序列有重复元素，则必然新加入的这个数字出现了2次，不断让i右移，使得[i,j]为最长不重复序列。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, j = <span class="hljs-number">0</span>; j &lt; n; j++) &#123;<br>        s[numbers[j]]++;<br>        <br>            <br>        <span class="hljs-keyword">while</span>(s[numbers[j]] &gt; <span class="hljs-number">1</span>) &#123;<br>            s[numbers[i]]--;<br>            i++;<br>        &#125;<br>    <br>        <br>        maxLength = <span class="hljs-built_in">max</span>(maxLength, j - i + <span class="hljs-number">1</span>);<br>    &#125;<br></code></pre></td></tr></table></figure>
-
-<p><strong>再看另外一道题</strong>：给定两个升序排序的有序数组 A和B ，以及一个目标值 x。 数组下标从0开始。 请你求出满足 A[i] + B[j] &#x3D; x 的数对 (i,j) ，数据保证有唯一解。其中，n,m,x ，分别表示 A 的长度，B 的长度以及目标值 x 。</p>
+<p><strong>再看另外一道题</strong>：给定两个升序排序的有序数组 A和B ，以及一个目标值 x。 数组下标从0开始。 请你求出满足 A[i] + B[j] = x 的数对 (i,j) ，数据保证有唯一解。其中，n,m,x ，分别表示 A 的长度，B 的长度以及目标值 x 。</p>
 <p>先看看暴力算法</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; n; i++) &#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; m; j++) &#123;<br>        <span class="hljs-keyword">if</span>(A[i] + B[j] == x) &#123;<br>            <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d %d\n&quot;</span>, i, j);<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
-
-<p>我们来看单调性，我们将问题转换为在不同i的情况下， A[i] + B[j] &gt;&#x3D; x 的j最小值。假如i向右移动，那么j会向右移动吗，显然不会。显然A[i+1]可能变大或不变，则对于的B可能变小或不变，则j向左移动或不动。</p>
+<p>我们来看单调性，我们将问题转换为在不同i的情况下， A[i] + B[j] &gt;= x 的j最小值。假如i向右移动，那么j会向右移动吗，显然不会。显然A[i+1]可能变大或不变，则对于的B可能变小或不变，则j向左移动或不动。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>, j = m - <span class="hljs-number">1</span>; ; i++) &#123;<br>    <span class="hljs-keyword">while</span>(A[i] + B[j - <span class="hljs-number">1</span>] &gt;= x) &#123;<br>        j--;<br>    &#125;<br>        <br>    <span class="hljs-keyword">if</span>(A[i] + B[j] == x) &#123;<br>        <span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d %d\n&quot;</span>, i,j);<br>        <span class="hljs-keyword">break</span>;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
                 
               </div>

@@ -16,12 +16,12 @@
   <meta name="author" content="tianfang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="问题1：输入一个长度为n的整数序列。接下来再输入m个询问，每个询问输入一对l,r。对于每个询问，输出原序列中从第l个数到第r个数的和。 如果直接暴力求解，注意到在m次查询中，会对某些元素进行重复的求和。 不妨构造前缀和数组 presum[n] &#x3D; nums[1]+nums[2]+…+nums[n]，第l个数到第r个数的和可化为presum[r] - presum[l-1]。那么问题的求解">
+    <meta name="description" content="问题1：输入一个长度为n的整数序列。接下来再输入m个询问，每个询问输入一对l,r。对于每个询问，输出原序列中从第l个数到第r个数的和。 如果直接暴力求解，注意到在m次查询中，会对某些元素进行重复的求和。 不妨构造前缀和数组 presum[n] &#x3D; nums[1]+nums[2]+…+nums[n]，第l个数到第r个数的和可化为presum[r] - presum[l-1]。那么问题的求解就有两个步">
 <meta property="og:type" content="article">
 <meta property="og:title" content="3. 前缀和与差分">
 <meta property="og:url" content="http://example.com/2024/01/06/AcwingBasicCourse/3/index.html">
 <meta property="og:site_name" content="tianfang&#39;s blog">
-<meta property="og:description" content="问题1：输入一个长度为n的整数序列。接下来再输入m个询问，每个询问输入一对l,r。对于每个询问，输出原序列中从第l个数到第r个数的和。 如果直接暴力求解，注意到在m次查询中，会对某些元素进行重复的求和。 不妨构造前缀和数组 presum[n] &#x3D; nums[1]+nums[2]+…+nums[n]，第l个数到第r个数的和可化为presum[r] - presum[l-1]。那么问题的求解">
+<meta property="og:description" content="问题1：输入一个长度为n的整数序列。接下来再输入m个询问，每个询问输入一对l,r。对于每个询问，输出原序列中从第l个数到第r个数的和。 如果直接暴力求解，注意到在m次查询中，会对某些元素进行重复的求和。 不妨构造前缀和数组 presum[n] &#x3D; nums[1]+nums[2]+…+nums[n]，第l个数到第r个数的和可化为presum[r] - presum[l-1]。那么问题的求解就有两个步">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-05T16:52:56.598Z">
 <meta property="article:modified_time" content="2024-01-07T01:10:27.715Z">
@@ -211,7 +211,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          887 字
+          881 字
         
       </span>
     
@@ -266,26 +266,24 @@
                 
                 <p><strong>问题1：输入一个长度为n的整数序列。接下来再输入m个询问，每个询问输入一对l,r。对于每个询问，输出原序列中从第l个数到第r个数的和。</strong></p>
 <p>如果直接暴力求解，注意到在m次查询中，会对某些元素进行重复的求和。</p>
-<p>不妨构造前缀和数组 presum[n] &#x3D; nums[1]+nums[2]+…+nums[n]，第l个数到第r个数的和可化为presum[r] - presum[l-1]。那么问题的求解就有两个步骤：</p>
+<p>不妨构造前缀和数组 presum[n] = nums[1]+nums[2]+…+nums[n]，第l个数到第r个数的和可化为presum[r] - presum[l-1]。那么问题的求解就有两个步骤：</p>
 <ol>
 <li>构造前缀和数组</li>
 </ol>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>   s[i] = s[i - <span class="hljs-number">1</span>] + datas[i];<br>&#125;<br></code></pre></td></tr></table></figure>
-
 <p>2. 利用前缀和数组求出给定序列的和</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, s[r] - s[l - <span class="hljs-number">1</span>]);<br></code></pre></td></tr></table></figure>
-
 <p>显然当查询次数很多时，后者做法较省时间。</p>
 <p><strong>问题2: 输入一个n行m列的整数矩阵，再输入q个询问，每个询问包含四个整数x1,y1,x2,y2，表示一个子矩阵的左上角坐标和右下角坐标。对于每个询问输出子矩阵中所有数的和。</strong></p>
 <p>我们受问题1的启发，希望构造二维前缀和数组，求解子矩阵的和。</p>
-<p>presum[x][y] &#x3D; num[x][y] + presum[x][y - 1] + presum[x - 1][y] - presum[x - 1][y -1]</p>
+<p>presum[x][y] = num[x][y] + presum[x][y - 1] + presum[x - 1][y] - presum[x - 1][y -1]</p>
 <p>得到二维前缀和数组，我们该如何求解子矩阵的和呢？</p>
 <p>子矩阵的和为 presum[x2][y2] - presum[x2][y1 -1] - presum[x1 - 1][y2] + presum[x1 - 1][y1 - 1]</p>
 <p><strong>问题3: 输入一个长度为n的整数序列。接下来输入m个操作，每个操作包含三个整数l,r,c，表示将序列中[l,r]之间的每个数加上c。</strong></p>
-<p>若直接进行暴力求解，会算m*(r-l+1)次。注意到若进行多次操作，对多个区域进行多次加数，实际上可一次性加这些数的和，存在时间上的优化可能性。若给定的整数序列为nums的前缀和数组，则称nums为presum的差分数组。现有前缀和数组，如何构造出差分数组。注意到 presum[n] &#x3D; nums[1]+nums[2]+…+nums[n]，则nums[n] &#x3D; presum[n] - presum[n-1]。</p>
+<p>若直接进行暴力求解，会算m*(r-l+1)次。注意到若进行多次操作，对多个区域进行多次加数，实际上可一次性加这些数的和，存在时间上的优化可能性。若给定的整数序列为nums的前缀和数组，则称nums为presum的差分数组。现有前缀和数组，如何构造出差分数组。注意到 presum[n] = nums[1]+nums[2]+…+nums[n]，则nums[n] = presum[n] - presum[n-1]。</p>
 <p>有了差分数组，我们对nums[l]加上c，显然其对应的前缀和数组从l到n均有加c。为了使得r+1到n不加上c，再对nums[r + 1]减上c。此时，其对应的前缀和数组从l到r均有加c，而且其他位置元素不变。再根据m次操作后的差分数组，可得到其对应的前缀和数组，也就是题目所求的整数序列。</p>
 <p><strong>问题4: 输入一个n行m列的整数矩阵，再输入q个操作，每个操作包含五个整数x1,y1,x2,y2,c，其中(x1,y1)和(x2,y2)表示一个子矩阵的左上角坐标和右下角坐标。每个操作都要将选中的子矩阵中的每个元素的值加上c。请你将进行完所有操作后的矩阵输出。</strong></p>
-<p>受问题3启发，想由二维前缀和数组得到二维差分数组。注意到prenum[x][y] &#x3D; num[x][y] + prenum[x][y - 1] + prenum[x - 1][y] - prenum[x - 1][y -1], 得到nums[x][y] &#x3D; prenum[x][y] - prenum[x-1][y] - prenum[x][y-1] + prenum[x-1][y-1]。</p>
+<p>受问题3启发，想由二维前缀和数组得到二维差分数组。注意到prenum[x][y] = num[x][y] + prenum[x][y - 1] + prenum[x - 1][y] - prenum[x - 1][y -1], 得到nums[x][y] = prenum[x][y] - prenum[x-1][y] - prenum[x][y-1] + prenum[x-1][y-1]。</p>
 <p>得到二维差分数组后，该如何对二维差分数组操作，使得其对应的二维前缀和数组满足操作后要求。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp">nums[x1][y1] +=c<br>nums[x2+<span class="hljs-number">1</span>][y1] -=c<br>nums[x1][y2+<span class="hljs-number">1</span>] -= c<br>nums[x2+<span class="hljs-number">1</span>][y2+<span class="hljs-number">1</span>] +=c<br></code></pre></td></tr></table></figure>
                 

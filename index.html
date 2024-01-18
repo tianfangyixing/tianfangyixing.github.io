@@ -216,6 +216,39 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/01/18/AcwingBasicCourse/math2/" target="_self">
+          19. 约数
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/18/AcwingBasicCourse/math2/" target="_self">
+        <div>
+          求约数求正整数a的所有约数，可以从1到a一个个遍历，看是不是它的因子。但前面我们已知道出现一个因子i，必然存在对应的另外一个因子\frac{a}{i}，易得只要遍历1到\sqrt{a}，就相当于遍历1到a。 同时需要注意的是，如果到\sqrt{a}是它的因子，要规定只push一次代码如下 12345678910111213141516vector&lt;int&gt; getDivisors(in
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-18 14:33" pubdate>
+              2024-01-18
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/01/17/AcwingBasicCourse/math1/" target="_self">
           18. 质数
         </a>
@@ -257,7 +290,7 @@
       
       <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/AcwingBasicCourse/17/" target="_self">
         <div>
-          堆是一个完全二叉树。小根堆是父节点小于子节点的堆，显然，根节点为最小值。大根堆是父节点大于子节点的堆，显然，根节点为最大值。 子节点与父节点的下标关系leftChild &#x3D; parent * 2 + 1 \\ rightChild &#x3D; parent * 2 + 2 \\ parent &#x3D; (child - 1) \div 2 注意：除法是向下取整 上浮&amp;下沉在
+          堆是一个完全二叉树。小根堆是父节点小于子节点的堆，显然，根节点为最小值。大根堆是父节点大于子节点的堆，显然，根节点为最大值。 子节点与父节点的下标关系leftChild = parent * 2 + 1 \\ rightChild = parent * 2 + 2 \\ parent = (child - 1) \div 2 注意：除法是向下取整 上浮&amp;下沉在堆中，有两个重要操作，上浮和下
         </div>
       </a>
 
@@ -489,39 +522,6 @@
       <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/AcwingBasicCourse/10/" target="_self">
         <div>
           栈是一个先进后出的结构，它可以使用指针实现。不过与链表同理，在算法竞赛一般不用，一般使用数组进行实现。同样地，该代码只保证输入进行合法的操作并且不考虑超过栈大小的问题 12345678910111213141516171819202122int top = -1;int datas[N];void push(int x) &#123;    datas[++top] = x; &#125;void
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-07 09:04" pubdate>
-              2024-01-07
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/07/AcwingBasicCourse/9/" target="_self">
-          9. 链表
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/AcwingBasicCourse/9/" target="_self">
-        <div>
-          链表可以用指针来实现，较为简单熟悉，这里不再赘述。但是，指针实现每次插入和删除都要调用malloc和free函数，而这来回从用户态切换到内核态，极其消耗时间，所以写算法题一般我们不用指针实现的链表，而是用数组实现。（当然可以使用内存分配器减少切换内核态的次数） 用指针实现的链表数据结构是这样的，并且有用到内存分配函数，这就启发我们：如果要是要数组实现，也要有对于的存储结构来存储next，分配内存，
         </div>
       </a>
 

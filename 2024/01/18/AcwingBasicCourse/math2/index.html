@@ -16,21 +16,21 @@
   <meta name="author" content="tianfang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="若一些数可以分为两个连续的部分，满足性质的部分和不满足性质部分，则我们称这些数具有二段性，那么我们就可以进行二分搜索。 对于一个升序或降序的数组，该数组必然满足二段性。例如，1 2 2 3 3 5 问题1: 在一个升序数列中，如何得到某个数的开始位置 升序数列必然可以分为两个部分，左边是不满足性质（不满足大于等于x），右边是满足性质（大于等于x的）。那么我们可以用整数二分得到满足性质的起始位置。但">
+    <meta name="description" content="求约数求正整数a的所有约数，可以从1到a一个个遍历，看是不是它的因子。但前面我们已知道出现一个因子i，必然存在对应的另外一个因子\frac{a}{i}，易得只要遍历1到\sqrt{a}，就相当于遍历1到a。 同时需要注意的是，如果到\sqrt{a}是它的因子，要规定只push一次代码如下 12345678910111213141516vector&lt;int&gt; getDivisors(in">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1. 整数二分">
-<meta property="og:url" content="http://example.com/2024/01/06/AcwingBasicCourse/1/index.html">
+<meta property="og:title" content="19. 约数">
+<meta property="og:url" content="http://example.com/2024/01/18/AcwingBasicCourse/math2/index.html">
 <meta property="og:site_name" content="tianfang&#39;s blog">
-<meta property="og:description" content="若一些数可以分为两个连续的部分，满足性质的部分和不满足性质部分，则我们称这些数具有二段性，那么我们就可以进行二分搜索。 对于一个升序或降序的数组，该数组必然满足二段性。例如，1 2 2 3 3 5 问题1: 在一个升序数列中，如何得到某个数的开始位置 升序数列必然可以分为两个部分，左边是不满足性质（不满足大于等于x），右边是满足性质（大于等于x的）。那么我们可以用整数二分得到满足性质的起始位置。但">
+<meta property="og:description" content="求约数求正整数a的所有约数，可以从1到a一个个遍历，看是不是它的因子。但前面我们已知道出现一个因子i，必然存在对应的另外一个因子\frac{a}{i}，易得只要遍历1到\sqrt{a}，就相当于遍历1到a。 同时需要注意的是，如果到\sqrt{a}是它的因子，要规定只push一次代码如下 12345678910111213141516vector&lt;int&gt; getDivisors(in">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-01-05T16:51:06.442Z">
-<meta property="article:modified_time" content="2024-01-07T01:09:33.605Z">
+<meta property="article:published_time" content="2024-01-18T06:33:08.427Z">
+<meta property="article:modified_time" content="2024-01-18T09:02:47.636Z">
 <meta property="article:author" content="tianfang">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>1. 整数二分 - tianfang&#39;s blog</title>
+  <title>19. 约数 - tianfang&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -188,7 +188,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="1. 整数二分"></span>
+            <span id="subtitle" data-typed-text="19. 约数"></span>
           
         </div>
 
@@ -199,8 +199,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-06 00:51" pubdate>
-          2024年1月6日 凌晨
+        <time datetime="2024-01-18 14:33" pubdate>
+          2024年1月18日 下午
         </time>
       </span>
     
@@ -211,7 +211,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          699 字
+          703 字
         
       </span>
     
@@ -259,24 +259,23 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">1. 整数二分</h1>
+            <h1 id="seo-header">19. 约数</h1>
             
             
               <div class="markdown-body">
                 
-                <p>若一些数可以分为两个连续的部分，满足性质的部分和不满足性质部分，则我们称这些数具有二段性，那么我们就可以进行二分搜索。</p>
-<p>对于一个升序或降序的数组，该数组必然满足二段性。例如，1 2 2 3 3 5</p>
-<p><strong>问题1: 在一个升序数列中，如何得到某个数的开始位置</strong></p>
-<p>升序数列必然可以分为两个部分，左边是不满足性质（不满足大于等于x），右边是满足性质（大于等于x的）。那么我们可以用整数二分得到满足性质的起始位置。但此时我们必不知道区间的边界在哪里。我们取middle，若它满足性质，则右边区间起始位置至少到m，即右边区间起始位置必然在在[l, m]，若为不满足性质，则可以知道不满足区间的部分的右边位置至少到m，现在则其要右边区间的起始位置不可能在[l,m]上，必然在[m+1, r]上。直到l &gt; r，此时l = r。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">SL</span><span class="hljs-params">(<span class="hljs-type">int</span> * datas, <span class="hljs-type">int</span> n, <span class="hljs-type">int</span> x)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span>(n &lt;= <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>    <br>    <span class="hljs-type">int</span> l = <span class="hljs-number">0</span>, r = n - <span class="hljs-number">1</span>, m = (l + r) / <span class="hljs-number">2</span>; <br>    <br>    <span class="hljs-keyword">while</span>(l &lt; r) &#123;<br>        <span class="hljs-keyword">if</span>(datas[m] &gt;= x) &#123;<br>            r = m;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            l = m + <span class="hljs-number">1</span>;<br>        &#125;<br>        <br>        m = (l + r) / <span class="hljs-number">2</span>;<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> l;<br>&#125;<br></code></pre></td></tr></table></figure>
-<p><strong>问题2：在一个升序数列中，得到元素的结束位置</strong></p>
-<p>同理，这段数可分为两个部分，左边是满足性质的（小于等于x），右边是不满足性质（不小于等于x的。我们只要获得左区间的结束位置就可以获得元素的结束位置。但此时我们必不知道区间的边界在哪里。我们取middle，若它满足性质，则满足性质的区间的右边界至少为m,若它不满足性质，则不满足性质的区间的左边界至多为m，满足性质区间的右边界不可能为[m,r]，则可能为[l,m-1]</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">SR</span><span class="hljs-params">(<span class="hljs-type">int</span> * datas, <span class="hljs-type">int</span> n, <span class="hljs-type">int</span> x)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span>(n &lt;= <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>    &#125;<br>    <br>    <span class="hljs-type">int</span> l = <span class="hljs-number">0</span>, r = n - <span class="hljs-number">1</span>, m = (l + r + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>;<br>    <br>    <span class="hljs-keyword">while</span>(l &lt; r) &#123;<br>        <span class="hljs-keyword">if</span>(datas[m] &lt;= x) &#123;<br>            l = m;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            r = m - <span class="hljs-number">1</span>;<br>        &#125;<br>        <br>        m = (l + r + <span class="hljs-number">1</span>) / <span class="hljs-number">2</span>;<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> l;<br>&#125; <br></code></pre></td></tr></table></figure>
-<p><strong>注意1: 当去获取某个区间的右边界时，middle = (l + r + 1) / 2而</strong></p>
-<p>若middle = (l + r) / 2，则对于数组 2 2，一开始l=0,m=0，而位置0的元素满足性质，则执行语句l=m，这样相当于没操作，接着下一步循环，故会导致死循环。</p>
-<p><strong>注意2: 二分一定有答案。</strong></p>
-<p>无论数列中是否存在解，二分都会返回一个可访问的下标位置，若该下标位置的元素不满足，则数列中不存在解。</p>
-
+                <h2 id="求约数"><a href="#求约数" class="headerlink" title="求约数"></a>求约数</h2><p>求正整数a的所有约数，可以从1到a一个个遍历，看是不是它的因子。但前面我们已知道出现一个因子<script type="math/tex">i</script>，必然存在对应的另外一个因子<script type="math/tex">\frac{a}{i}</script>，易得只要遍历1到<script type="math/tex">\sqrt{a}</script>，就相当于遍历1到<script type="math/tex">a</script>。</p>
+<p>同时需要注意的是，如果到<script type="math/tex">\sqrt{a}</script>是它的因子，要规定只push一次<br>代码如下</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">getDivisors</span><span class="hljs-params">(<span class="hljs-type">int</span> a)</span> </span>&#123;<br>    vector&lt;<span class="hljs-type">int</span>&gt; nums;<br>    <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= a / i; i++) &#123;<br>        <span class="hljs-keyword">if</span>(a % i == <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">if</span>(i != a / i) &#123;<br>                nums.<span class="hljs-built_in">push_back</span>(i);<br>                nums.<span class="hljs-built_in">push_back</span>(a / i);<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                nums.<span class="hljs-built_in">push_back</span>(i);<br>            &#125;<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> nums;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="求约数个数"><a href="#求约数个数" class="headerlink" title="求约数个数"></a>求约数个数</h2><p>要求a的约数的个数，看起来好像可以求约数然后再取vector的size就可以了。但是一旦数大了，那么做效率低。<br>实际上，我们可以对a进行质因数分解 </p>
+<script type="math/tex; mode=display">a = p_{1}^{a_{1}} \times  p_{2}^{a_{2}} \times  p_{3}^{a_{3}} \times  p_{4}^{a_{4}} \times... \times  p_{n}^{a_{n}}</script><p>注意到a的约数只是<script type="math/tex">p_{1}</script>到<script type="math/tex">p_{n}</script>的幂表示，只是它们的组合，可以用分步计数原理进行求解，得到</p>
+<script type="math/tex; mode=display">count = (a_{1} + 1) \times (a_{2} + 1) \times (a_{3} + 1) \times ...\times(a_{n} + 1)</script><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">getDivisorCount</span><span class="hljs-params">(<span class="hljs-type">int</span> a)</span> </span>&#123;<br>    unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; primes = <span class="hljs-built_in">divide</span>(a);<br>    <span class="hljs-type">int</span> count = <span class="hljs-number">1</span>;<br><br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> prime : primes) &#123;<br>        count *= (prime.second + <span class="hljs-number">1</span>);<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> count;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h2 id="求约数的和"><a href="#求约数的和" class="headerlink" title="求约数的和"></a>求约数的和</h2><p>要求a的约数的和，同样的，我们可以对a进行质因数分解。</p>
+<script type="math/tex; mode=display">a = p_{1}^{a_{1}} \times  p_{2}^{a_{2}} \times  p_{3}^{a_{3}} \times  p_{4}^{a_{4}} \times... \times  p_{n}^{a_{n}}</script><p>注意到a的约数只是<script type="math/tex">p_{1}</script>到<script type="math/tex">p_{n}</script>的组合，所以a的约数的和为</p>
+<script type="math/tex; mode=display">sum = (p_{1}^{0} + p_{1}^{1} + p_{1}^{2} + ... + p_{1}^{a_{1}}) \times (p_{1}^{0} + p_{2}^{1} + p_{2}^{2} + ... + p_{2}^{a_{2}}) \times ... \times (p_{n}^{0} + p_{n}^{1} + p_{n}^{2} + p_{n}^{a_{n}})</script><p>代码为<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">getDivisorSum</span><span class="hljs-params">(<span class="hljs-type">int</span> a)</span> </span>&#123;<br>    ull sum = <span class="hljs-number">1</span>;<br>    unordered_map&lt;<span class="hljs-type">int</span>, <span class="hljs-type">int</span>&gt; primes = <span class="hljs-built_in">divide</span>(a);<br>    <br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> prime : primes) &#123;<br>        <span class="hljs-type">int</span> subSum = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> t = <span class="hljs-number">1</span>;<br>        <br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt;= prime.second; i++) &#123;<br>            subSum += t;<br>            t *= prime.first;<br>        &#125;<br>        <br>        sum *= subSum;<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> sum;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<h2 id="求最大公约数"><a href="#求最大公约数" class="headerlink" title="求最大公约数"></a>求最大公约数</h2><p>求最大公约数，即求两个数的最大公因子。我们可以用数学上的辗转相除法来解决。辗转相除法基于如下原理：两个整数的最大公约数等于其中较小的数和两数相除余数的最大公约数，数学语言描述：</p>
+<script type="math/tex; mode=display">若a > b, 则gcd(a, b)=gcd(b,a \; mod \; b)</script><p>证明如下：<br>设<script type="math/tex">d</script>是<script type="math/tex">a</script>和<script type="math/tex">b</script>的最小公约数，<script type="math/tex">c = a \; mod \; b</script>，即<script type="math/tex">a \mid d</script>并且<script type="math/tex">b \mid d</script>又<script type="math/tex">c = \frac{a-kb}{d} = \frac{a}{d}-\frac{kb}{d}</script>，则必然满足<script type="math/tex">c \mid d</script><br>我们不断将函数第二项递减，递减到0，此时的第一项就是最大公约数<br>例如</p>
+<script type="math/tex; mode=display">gcd(12,9)=gcd(9,3)=gcd(3,0)</script><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">gcd_version1</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> </span>&#123;<br>    <span class="hljs-keyword">if</span>(a &lt; b) &#123;<br>        <span class="hljs-built_in">swap</span>(a, b);<br>    &#125;<br>    <br>    <span class="hljs-keyword">while</span>(b != <span class="hljs-number">0</span>) &#123;<br>        <span class="hljs-type">int</span> temp = a % b;<br>        a = b;<br>        b = temp; <br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> a;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">gcd_version2</span><span class="hljs-params">(<span class="hljs-type">int</span> a, <span class="hljs-type">int</span> b)</span> </span>&#123;<br>	<span class="hljs-keyword">return</span> b ? <span class="hljs-built_in">gcd</span>(b, a % b) : a;<br>&#125;<br></code></pre></td></tr></table></figure>
                 
               </div>
             
@@ -293,8 +292,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>1. 整数二分</div>
-      <div>http://example.com/2024/01/06/AcwingBasicCourse/1/</div>
+      <div>19. 约数</div>
+      <div>http://example.com/2024/01/18/AcwingBasicCourse/math2/</div>
     </div>
     <div class="license-meta">
       
@@ -306,7 +305,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年1月6日</div>
+          <div>2024年1月18日</div>
         </div>
       
       
@@ -338,15 +337,15 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/06/AcwingBasicCourse/2/" title="2. 高精度整数">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">2. 高精度整数</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
+                    
+                      <a href="/2024/01/17/AcwingBasicCourse/math1/" title="18. 质数">
+                        <span class="hidden-mobile">18. 质数</span>
+                        <span class="visible-mobile">下一篇</span>
+                        <i class="iconfont icon-arrowright"></i>
+                      </a>
                     
                   </article>
                 </div>
