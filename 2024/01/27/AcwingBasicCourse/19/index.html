@@ -16,21 +16,21 @@
   <meta name="author" content="tianfang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="欧拉函数欧拉函数，是1到n与它互质的数的个数，记作\varphi(n)。例如\varphi(9) &#x3D; 6 因为1,2,4,5,7,8与9互质。 性质1 \varphi(p^k)&#x3D;p^k-p^{k-1}对于质数p，p^k中不与它互质的数有p,2p,3p,4p,..,p^{k-1} \times p，也就是p^{k-1}个，又1~p^k有p^k个数，那么\varphi(p^k)&#x3D;p^k-p^{k-1}">
+    <meta name="description" content="BFS,即宽度优先搜索，是每次只访问所有同一深度的节点，从深度小的访问到深度大的节点。算法步骤一般如下:  放入起点 不断取出队头，并将它的未访问过的相邻可访问节点放入队列 当队列为空时，BFS完成。  例题：给定一个n \times m的二维整数数组，用来表示一个迷宫，数组中只包含0或1，其中0表示可以走的路，1表示不可通过的墙壁。最初，有一个人位于左上角(1,1)处，已知该人每次可以向上、下、">
 <meta property="og:type" content="article">
-<meta property="og:title" content="20. 欧拉函数">
-<meta property="og:url" content="http://example.com/2024/01/18/AcwingBasicCourse/math3/index.html">
+<meta property="og:title" content="19. BFS初步">
+<meta property="og:url" content="http://example.com/2024/01/27/AcwingBasicCourse/19/index.html">
 <meta property="og:site_name" content="tianfang&#39;s blog">
-<meta property="og:description" content="欧拉函数欧拉函数，是1到n与它互质的数的个数，记作\varphi(n)。例如\varphi(9) &#x3D; 6 因为1,2,4,5,7,8与9互质。 性质1 \varphi(p^k)&#x3D;p^k-p^{k-1}对于质数p，p^k中不与它互质的数有p,2p,3p,4p,..,p^{k-1} \times p，也就是p^{k-1}个，又1~p^k有p^k个数，那么\varphi(p^k)&#x3D;p^k-p^{k-1}">
+<meta property="og:description" content="BFS,即宽度优先搜索，是每次只访问所有同一深度的节点，从深度小的访问到深度大的节点。算法步骤一般如下:  放入起点 不断取出队头，并将它的未访问过的相邻可访问节点放入队列 当队列为空时，BFS完成。  例题：给定一个n \times m的二维整数数组，用来表示一个迷宫，数组中只包含0或1，其中0表示可以走的路，1表示不可通过的墙壁。最初，有一个人位于左上角(1,1)处，已知该人每次可以向上、下、">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-01-18T11:46:53.171Z">
-<meta property="article:modified_time" content="2024-01-19T10:23:27.001Z">
+<meta property="article:published_time" content="2024-01-27T14:28:04.800Z">
+<meta property="article:modified_time" content="2024-01-27T15:45:57.684Z">
 <meta property="article:author" content="tianfang">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>20. 欧拉函数 - tianfang&#39;s blog</title>
+  <title>19. BFS初步 - tianfang&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -188,7 +188,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="20. 欧拉函数"></span>
+            <span id="subtitle" data-typed-text="19. BFS初步"></span>
           
         </div>
 
@@ -199,8 +199,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-18 19:46" pubdate>
-          2024年1月18日 晚上
+        <time datetime="2024-01-27 22:28" pubdate>
+          2024年1月27日 晚上
         </time>
       </span>
     
@@ -211,7 +211,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          752 字
+          341 字
         
       </span>
     
@@ -222,7 +222,7 @@
         
         
         
-          7 分钟
+          3 分钟
         
       </span>
     
@@ -259,30 +259,19 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">20. 欧拉函数</h1>
+            <h1 id="seo-header">19. BFS初步</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="欧拉函数"><a href="#欧拉函数" class="headerlink" title="欧拉函数"></a>欧拉函数</h2><p>欧拉函数，是1到n与它互质的数的个数，记作<script type="math/tex">\varphi(n)</script>。例如<script type="math/tex">\varphi(9) = 6</script> 因为<script type="math/tex">1,2,4,5,7,8</script>与<script type="math/tex">9</script>互质。</p>
-<h3 id="性质1-varphi-p-k-p-k-p-k-1"><a href="#性质1-varphi-p-k-p-k-p-k-1" class="headerlink" title="性质1 \varphi(p^k)=p^k-p^{k-1}"></a>性质1 <script type="math/tex">\varphi(p^k)=p^k-p^{k-1}</script></h3><p>对于质数<script type="math/tex">p</script>，<script type="math/tex">p^k</script>中不与它互质的数有<script type="math/tex">p,2p,3p,4p,..,p^{k-1} \times p</script>，也就是<script type="math/tex">p^{k-1}</script>个，又<script type="math/tex">1~p^k</script>有p^k个数，那么<script type="math/tex">\varphi(p^k)=p^k-p^{k-1}</script></p>
-<h3 id="性质2-varphi-p-a-q-b-varphi-p-a-varphi-q-b"><a href="#性质2-varphi-p-a-q-b-varphi-p-a-varphi-q-b" class="headerlink" title="性质2 \varphi(p^a q^b) = \varphi(p^a)\varphi(q^b)"></a>性质2 <script type="math/tex">\varphi(p^a q^b) = \varphi(p^a)\varphi(q^b)</script></h3><p>对于质数<script type="math/tex">p</script>和<script type="math/tex">q</script>，从<script type="math/tex">1</script>到<script type="math/tex">p^a q^b</script>，可以分为四种数，一种是<script type="math/tex">p</script>的倍数，一种是<script type="math/tex">q</script>的倍数，一种是<script type="math/tex">pq</script>倍数，一种是与<script type="math/tex">p^a q^b</script>互质的数，显然<script type="math/tex">p</script>的倍数与<script type="math/tex">q</script>的倍数<br>的部分有交叉，交叉部分恰好为pq倍数。设x的倍数的数量记作<script type="math/tex">m(x)</script><br>枚举<script type="math/tex">p,2p,3p,...,(p^{a-1}q^b) \times p</script>，<script type="math/tex">m(p)=p^{a-1}q^b</script><br>枚举<script type="math/tex">q,2q,3q,...,(p^a q^{b-1}) \times q</script>，<script type="math/tex">m(q)=p^a q^{b-1}</script><br>枚举<script type="math/tex">pq,2pq,3pq,...,(p^{a-1}b^{b-1})\times pq</script>，<script type="math/tex">m(pq)=p^{a-1} q^{b-1}</script><br>而与<script type="math/tex">p^a q^b</script>互质的数，为<script type="math/tex">\varphi(p^a q^b)</script><br>四者必然满足 <script type="math/tex">n = p^a q^b = m(p) + m(q) - m(pq) + \varphi(p^a q^b)</script><br>对其进行变式</p>
-<script type="math/tex; mode=display">\begin{eqnarray}    \label{eq}
-\varphi{(p^a q^b)}&=&n - m(p) - m(q) + m(pq)\nonumber    \\
-&=&p^a q^b - p^{a-1}q^b - p^a q^{b-1} + p^{a-1} q^{b-1} \nonumber    \\
-&=&(p^{a-1}-1)(q^{b-1}-1) \nonumber    \\
-&=&\varphi(p^a)\varphi(q^b)
-\end{eqnarray}</script><h3 id="程序求解欧拉函数"><a href="#程序求解欧拉函数" class="headerlink" title="程序求解欧拉函数"></a>程序求解欧拉函数</h3><p>求解<script type="math/tex">\varphi(n)</script>，实际上可以将n质因数分解，<script type="math/tex">n = p_{1}^{a_{1}} \times  p_{2}^{a_{2}} \times... \times  p_{n}^{a_{n}}</script>，</p>
-<script type="math/tex; mode=display">\begin{equation*}
-  \begin{aligned}
-    \varphi(n) &= \varphi({p_{1}^{a_{1}}  p_{2}^{a_{2}} ...   p_{n}^{a_{n}}}) \\
-         &= \varphi{(p_{1}^{a_{1}})}  \varphi{(p_{2}^{a_{2}})}  ...  \varphi{(p_{n}^{a_{n}})} \\
-         &= (p^{a_{1}} - p^{a_{1}-1})(p^{a_{2}} - p^{a_{2}-1}) (p^{a_{n}} - p^{a_{n}-1}) \\
-         &= p_{1}^{a_{1}} p_{2}^{a_{2}} ...   p_{n}^{a_{n}} \times(1-\frac{1}{p_{1}})(1-\frac{1}{p_{2}})...(1-\frac{n}{p_{n}})) \\
-         &= n \times(1-\frac{1}{p_{1}})(1-\frac{1}{p_{2}})...(1-\frac{n}{p_{n}}))  \\
-  \end{aligned}
-\end{equation*}</script><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">ull <span class="hljs-title">EulerTotient</span><span class="hljs-params">(ull n)</span> </span>&#123;<br>    ull result = n;<br>    unordered_map&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; primes;<br>    <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">2</span>; (ull)i &lt;= n / i; i++) &#123;<br>        <span class="hljs-keyword">if</span>(n % i == <span class="hljs-number">0</span>) &#123;<br>            ull times = <span class="hljs-number">0</span>;<br>            <br>            <span class="hljs-keyword">while</span>(n % i == <span class="hljs-number">0</span>) &#123;<br>                n /= i;<br>                times++;<br>            &#125;<br>            <br>            primes[i] = times;<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">if</span>(n != <span class="hljs-number">1</span>) &#123;<br>        primes[n] = <span class="hljs-number">1</span>;<br>    &#125;<br>    <br>    <br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> prime : primes) &#123;<br>        result = (result * prime.first - result) / prime.first;<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="筛法求欧拉函数"><a href="#筛法求欧拉函数" class="headerlink" title="筛法求欧拉函数"></a>筛法求欧拉函数</h2><p>运用欧拉筛法去求<script type="math/tex">\sum_{i=1}^{n}\varphi(i)</script><br>对于质数p，<script type="math/tex">\varphi(p) = p - 1</script><br>对于用最小质因子p标记的<script type="math/tex">p * i</script>，它的欧拉函数求解有两种情况<br>一种是p和i互质,<script type="math/tex">\varphi(p * i) = \varphi(p) \times \varphi(i)</script><br>一种是p和i不互质，说明i包含p的所有质因子， 因此有<script type="math/tex">\varphi(p * i) = i \times \varphi(p)</script><br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">ull <span class="hljs-title">solve</span><span class="hljs-params">(<span class="hljs-type">int</span> n)</span> </span>&#123;<br>    <span class="hljs-type">const</span> <span class="hljs-type">int</span> N = <span class="hljs-number">1e6</span>+<span class="hljs-number">10</span>;<br>    vector&lt;<span class="hljs-type">int</span>&gt; primes;<br>    <span class="hljs-type">int</span> totient[N];<br>    <span class="hljs-type">bool</span> isNotPrime[N];<br>    ull total = <span class="hljs-number">0</span>;<br>    <br>    totient[<span class="hljs-number">1</span>] = <span class="hljs-number">1</span>;<br>    <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">2</span>; i &lt;= n; i++) &#123;<br>        <span class="hljs-keyword">if</span>(!isNotPrime[i]) &#123;<br>            primes.<span class="hljs-built_in">push_back</span>(i);<br>            totient[i] = i - <span class="hljs-number">1</span>; <br>        &#125;<br>        <br>        <br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt; primes.<span class="hljs-built_in">size</span>() &amp;&amp; primes[j] * i &lt;= n; j++) &#123;<br>            isNotPrime[primes[j] * i] = <span class="hljs-literal">true</span>;<br>            <br>            <span class="hljs-keyword">if</span>(i % primes[j] == <span class="hljs-number">0</span>) &#123;<br>                totient[primes[j] * i] = primes[j] * totient[i];<br>                <span class="hljs-keyword">break</span>;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                totient[primes[j] * i] = totient[i] * totient[primes[j]];<br>            &#125;<br>        &#125; <br>    &#125;<br>    <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>        total += totient[i];<br>    &#125;<br>    <br>    <br>    <span class="hljs-keyword">return</span> total;<br>    <br>&#125;<br></code></pre></td></tr></table></figure></p>
+                <p>BFS,即宽度优先搜索，是每次只访问所有同一深度的节点，从深度小的访问到深度大的节点。算法步骤一般如下:</p>
+<ol>
+<li>放入起点</li>
+<li>不断取出队头，并将它的未访问过的相邻可访问节点放入队列</li>
+<li>当队列为空时，BFS完成。</li>
+</ol>
+<p>例题：给定一个<script type="math/tex">n \times m</script>的二维整数数组，用来表示一个迷宫，数组中只包含<script type="math/tex">0</script>或<script type="math/tex">1</script>，其中<script type="math/tex">0</script>表示可以走的路，<script type="math/tex">1</script>表示不可通过的墙壁。最初，有一个人位于左上角<script type="math/tex">(1,1)</script>处，已知该人每次可以向上、下、左、右任意一个方向移动一个位置。请问，该人从左上角移动至右下角<script type="math/tex">(n,m)</script>处，至少需要移动多少次?<br>容易画出状态空间，写出代码。<br>注意：写bfs关键点在于，什么是可访问，已遍历过的，不符合条件的</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><code class="hljs c++">states.<span class="hljs-built_in">push</span>(&#123;<span class="hljs-number">1</span>,<span class="hljs-number">1</span>&#125;);<br>cost[<span class="hljs-number">1</span>][<span class="hljs-number">1</span>] = <span class="hljs-number">0</span>;<br>    <br><span class="hljs-keyword">while</span>(!states.<span class="hljs-built_in">empty</span>()) &#123;<br>    pair&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; currentState = states.<span class="hljs-built_in">front</span>();<br>    states.<span class="hljs-built_in">pop</span>();<br>        <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">0</span>; i &lt; <span class="hljs-number">4</span>; i++) &#123;<br>        pair&lt;<span class="hljs-type">int</span>,<span class="hljs-type">int</span>&gt; newState = &#123;currentState.first + velocities[i].fircurrentState.second + velocities[i].second&#125;;<br>            <br>        <span class="hljs-keyword">if</span>(newState.first &gt;= <span class="hljs-number">1</span> &amp;&amp; newState.first &lt;= n &amp;&amp; newState.second &gt;= <span class="hljs-number">1</span>newState.second &lt;= m &amp;&amp; cost[newState.first][newState.second] == <span class="hljs-number">-1</span> &amp;&amp; map[newState.first][newState.second] == <span class="hljs-number">0</span>) &#123;<br>            states.<span class="hljs-built_in">push</span>(newState);<br>            cost[newState.first][newState.second] = cost[currentState.first][currentState.second] + <span class="hljs-number">1</span>;<br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
 
                 
               </div>
@@ -300,8 +289,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>20. 欧拉函数</div>
-      <div>http://example.com/2024/01/18/AcwingBasicCourse/math3/</div>
+      <div>19. BFS初步</div>
+      <div>http://example.com/2024/01/27/AcwingBasicCourse/19/</div>
     </div>
     <div class="license-meta">
       
@@ -313,7 +302,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年1月18日</div>
+          <div>2024年1月27日</div>
         </div>
       
       
@@ -345,9 +334,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/27/AcwingBasicCourse/18/" title="18. DFS初步">
+                      <a href="/2024/01/27/AcwingBasicCourse/21/" title="21. 图">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">18. DFS初步</span>
+                        <span class="hidden-mobile">21. 图</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -355,8 +344,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/18/AcwingBasicCourse/math2/" title="19. 约数">
-                        <span class="hidden-mobile">19. 约数</span>
+                      <a href="/2024/01/27/AcwingBasicCourse/18/" title="18. DFS初步">
+                        <span class="hidden-mobile">18. DFS初步</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

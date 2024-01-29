@@ -216,6 +216,171 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/01/28/AcwingBasicCourse/dp1/" target="_self">
+          22. 背包DP
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/28/AcwingBasicCourse/dp1/" target="_self">
+        <div>
+          动态递归介绍定义动态规划(DP)是解决子问题重叠的问题的一种有效方式。一个问题如果能使用dp解决，那么要思考最小的子问题是什么，复杂问题怎么由子问题推导而来。 简单例题首先看一个简单的例题：假设你正在爬楼梯。需要n(n \ge 1)阶你才能到达楼顶。每次你可以爬1或2 个台阶。你有多少种不同的方法可以爬到楼顶呢？ dp[i]$$定义为需要i阶你才能到达楼顶的不同方法数，然后递推公式为 $$dp[i
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-28 00:46" pubdate>
+              2024-01-28
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/27/AcwingBasicCourse/20/" target="_self">
+          20. 树
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/27/AcwingBasicCourse/20/" target="_self">
+        <div>
+          树在算法竞赛中如何表示邻接链表保存边的信息 1234567891011int value[MAX];int next[MAX];int h[MAX];int allocIndex = 0;void add(int a, int b) &#123;    next[allocIndex] = h[a];    value[allocIndex] = b;    h[a] = allocIndex;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-27 23:50" pubdate>
+              2024-01-27
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/27/AcwingBasicCourse/21/" target="_self">
+          21. 图
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/27/AcwingBasicCourse/21/" target="_self">
+        <div>
+          拓扑排序问题若一个由图中所有点构成的序列A满足：对于图中的每条边(x,y)，x在A中都出现在y之前，则称A是该图的一个拓扑序列。类似于学习路线。 解法为什么序列A的最前面的元素，我们把它放在最前面呢？因为没有顶点指向它，所以我们先放它。我们称指向该顶点的边数量为入度，由于它的入度为0，所以我们放它在最前面。把这个顶点拿出去后，它所指向节点的入度减1，又有新的顶点的入度为0，反复这个过程。 实现步骤
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-27 23:50" pubdate>
+              2024-01-27
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/27/AcwingBasicCourse/19/" target="_self">
+          19. BFS初步
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/27/AcwingBasicCourse/19/" target="_self">
+        <div>
+          BFS,即宽度优先搜索，是每次只访问所有同一深度的节点，从深度小的访问到深度大的节点。算法步骤一般如下:  放入起点 不断取出队头，并将它的未访问过的相邻可访问节点放入队列 当队列为空时，BFS完成。  例题：给定一个n \times m的二维整数数组，用来表示一个迷宫，数组中只包含0或1，其中0表示可以走的路，1表示不可通过的墙壁。最初，有一个人位于左上角(1,1)处，已知该人每次可以向上、下、
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-27 22:28" pubdate>
+              2024-01-27
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/27/AcwingBasicCourse/18/" target="_self">
+          18. DFS初步
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/27/AcwingBasicCourse/18/" target="_self">
+        <div>
+          深度优先搜索，DFS，不断递归下去，直到不可以走，再回溯上来。一条路走到底，这也就是它为什么称之为深度优先。实现步骤为：  选定一个状态 递归它的可访问状态 回溯,再递归下一个可访问状态123456void dfs() &#123;	// 是否已走到底	// 遍历可转移状态，每次递归后必须回溯&#125;   一般最好画出状态空间，然后好确定某一个状态的可访问状态，什么时候走到底。例题：给定一个整
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-27 18:26" pubdate>
+              2024-01-27
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/01/18/AcwingBasicCourse/math3/" target="_self">
           20. 欧拉函数
         </a>
@@ -375,176 +540,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/07/AcwingBasicCourse/15/" target="_self">
-          15. 哈希表
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/AcwingBasicCourse/15/" target="_self">
-        <div>
-          哈希表一种搜索，查询，删除操作时间复杂度为 O(N) 的表，但遍历，找最大值的操作实现时间复杂度较高。 哈希函数普通表需要遍历搜索才能知道元素的位置。但哈希表可以用哈希函数通过key算出下标位置。在理想的情况下，哈希表的查找存储删除效率达到O（1）。但是较多的情况映射到更少种可能的下标位置，必然会出现不同key出现同一个hash值的情况，称哈希冲突，那么如何解决哈希冲突呢？ 首先一定要选择一个好的
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-07 10:10" pubdate>
-              2024-01-07
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/07/AcwingBasicCourse/14/" target="_self">
-          14. 字典树（Trie）
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/AcwingBasicCourse/14/" target="_self">
-        <div>
-          Trie树，即字典树，又称单词查找树或键树，经常应用是用于统计和排序大量的字符串。  字典树，从根节点到某一节点，路径上经过的字符连接起来，为该节点对应的字符串。除根节点外，每一个节点的位置代表了一个字符串。用数组实现，它的数据存储这样的，0为根节点的位置，next[i][c - ‘a’] 为位置为i的节点的字符c边的节点位置，若为0，则没有这个节点。cnt为该节点字符串出现次数，index为可用
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-07 10:10" pubdate>
-              2024-01-07
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/07/AcwingBasicCourse/13/" target="_self">
-          13. kmp
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/AcwingBasicCourse/13/" target="_self">
-        <div>
-          E=mc^2 hash(str) = str[0] \times P^{n-1} + str[1] \times P^{n-2} + ... + str[n-1] \times P^{0}
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-07 10:10" pubdate>
-              2024-01-07
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/07/AcwingBasicCourse/12/" target="_self">
-          12. 单调栈和单调队列
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/AcwingBasicCourse/12/" target="_self">
-        <div>
-          单调栈是满足单调性的栈。若栈从底部到顶部有严格单调递增，则称为单调递增栈。若栈从底部到顶部有严格单调递减，则称为单调递减栈。 单调栈可用来解决寻找左边或右边第一个与它构成某种特定大小关系的数，比如寻找左边第一个比它小的数。我们来看看一道题目。 题目：给定一个长度为 N 的整数数列，输出每个数左边第一个比它小的数，如果不存在则输出 -1 。 我们可以维护一个单调递增栈：从左到右遍历，依次放入元素，若
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-07 10:10" pubdate>
-              2024-01-07
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/07/AcwingBasicCourse/11/" target="_self">
-          11. 队列
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/AcwingBasicCourse/11/" target="_self">
-        <div>
-          我们讲讲队列的数组实现。在算法竞赛中，为了快速写出队列，允许队列浪费空间。我们可以这样写 12345678910111213141516171819202122232425const int N = 100010;int front, rear;int datas[N];void init() &#123;    front = 0;    rear = -1;&#125;void pop() &
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-07 10:10" pubdate>
-              2024-01-07
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 
