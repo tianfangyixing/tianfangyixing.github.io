@@ -216,6 +216,138 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/01/18/AcwingBasicCourse/math2/" target="_self">
+          19. 约数
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/18/AcwingBasicCourse/math2/" target="_self">
+        <div>
+          求约数求正整数a的所有约数，可以从1到a一个个遍历，看是不是它的因子。但前面我们已知道出现一个因子i，必然存在对应的另外一个因子\frac{a}{i}，易得只要遍历1到\sqrt{a}，就相当于遍历1到a。 同时需要注意的是，如果到\sqrt{a}是它的因子，要规定只push一次代码如下 12345678910111213141516vector&lt;int&gt; getDivisors(in
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-18 14:33" pubdate>
+              2024-01-18
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/17/AcwingBasicCourse/math1/" target="_self">
+          18. 质数
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/17/AcwingBasicCourse/math1/" target="_self">
+        <div>
+          质数是指只有2个因子并且大于或等于2的数 判断一个数是否为质数暴力做法遍历2到x-1的每一个数，看这些数是否是它的因子，即判断是否能够整除，如果碰到能整除的数，则不是质数。如果都不能整除，则是质数。 12345678910111213bool isPrime(int x) &#123;    if(x == 1) &#123;        return false;    &#125;
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-17 23:38" pubdate>
+              2024-01-17
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/07/AcwingBasicCourse/17/" target="_self">
+          17. 堆
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/AcwingBasicCourse/17/" target="_self">
+        <div>
+          堆是一个完全二叉树。小根堆是父节点小于子节点的堆，显然，根节点为最小值。大根堆是父节点大于子节点的堆，显然，根节点为最大值。 子节点与父节点的下标关系leftChild = parent * 2 + 1 \\ rightChild = parent * 2 + 2 \\ parent = (child - 1) \div 2 注意：除法是向下取整 上浮&amp;下沉在堆中，有两个重要操作，上浮和下
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-07 10:10" pubdate>
+              2024-01-07
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/07/AcwingBasicCourse/16/" target="_self">
+          16. 并查集
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/AcwingBasicCourse/16/" target="_self">
+        <div>
+          并查集是管理元素所属集合的数据结构，它的重要操作有两个，一是合并操作，二是查询所属集合的操作。 初始化初始化时，所有的元素都是互不关联的，每个节点都是一颗树，树中只有它自己一个节点。其中，用数组存储父节点或祖先节的点下标地址。 12345void init(int n) &#123;    for(int i = 1; i &lt;= n; i++) &#123;        parent[i]
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-07 10:10" pubdate>
+              2024-01-07
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/01/07/AcwingBasicCourse/15/" target="_self">
           15. 哈希表
         </a>
@@ -390,138 +522,6 @@
       <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/AcwingBasicCourse/10/" target="_self">
         <div>
           栈是一个先进后出的结构，它可以使用指针实现。不过与链表同理，在算法竞赛一般不用，一般使用数组进行实现。同样地，该代码只保证输入进行合法的操作并且不考虑超过栈大小的问题 12345678910111213141516171819202122int top = -1;int datas[N];void push(int x) &#123;    datas[++top] = x; &#125;void
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-07 09:04" pubdate>
-              2024-01-07
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/07/AcwingBasicCourse/9/" target="_self">
-          9. 链表
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/AcwingBasicCourse/9/" target="_self">
-        <div>
-          链表可以用指针来实现，较为简单熟悉，这里不再赘述。但是，指针实现每次插入和删除都要调用malloc和free函数，而这来回从用户态切换到内核态，极其消耗时间，所以写算法题一般我们不用指针实现的链表，而是用数组实现。（当然可以使用内存分配器减少切换内核态的次数） 面对数组实现，我们会提出4个问题  节点怎么保存，节点包括next和value 头节点怎么表示 nullptr怎么表示 内存怎么分配  这
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-07 09:04" pubdate>
-              2024-01-07
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/07/AcwingBasicCourse/8/" target="_self">
-          8. 双指针算法
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/AcwingBasicCourse/8/" target="_self">
-        <div>
-          题目：给定一个长度为 n 的整数序列，请找出最长的不包含重复的数的连续区间，输出它的长度。 这个问题可以进行暴力求解，i为起点，j为终点 1234567for(int j = 0; i &lt; n; j++) &#123;    for(int i = 0; i &lt;= j; i++) &#123;        if(check(numbers, i, j)) &#123;
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-07 09:04" pubdate>
-              2024-01-07
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/07/AcwingBasicCourse/7/" target="_self">
-          7. 区间合并
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/AcwingBasicCourse/7/" target="_self">
-        <div>
-          题目：给定 n 个区间 [l,r] ，要求合并所有有交集的区间。 注意如果在端点处相交，也算有交集。 输出合并完成后的区间个数。 数据范围： 1≤n≤100000, −109≤l≤r≤109 先对这n个区间进行排序（先根据l从小到大，若相等再根据r的大小进行排序）。在排序完后，则可以合并的区间必然在相邻位置，是连在一起的。因此，我们从第一个区间开始向右合并区间，其得到的区间必然不可再合并。设正在合
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-07 09:04" pubdate>
-              2024-01-07
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/07/AcwingBasicCourse/6/" target="_self">
-          6. 区间和（离散化）
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/AcwingBasicCourse/6/" target="_self">
-        <div>
-          问题：假定有一个无限长的数轴，数轴上每个坐标上的数都是0 。 现在，我们首先进行 n 次操作，每次操作将某一位置 x 上的数加 c 。 接下来，进行 c 次询问，每个询问包含两个整数 l 和 r ，你需要求出在区间 [l,r] 之间的所有数的和。 数据范围： −10^9≤x≤10^9，1≤n,m≤10^5，−10^9≤l≤r≤10^9，−10000≤c≤10000 这道题显然不能直接用数组进行存储
         </div>
       </a>
 

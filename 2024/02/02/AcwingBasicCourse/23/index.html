@@ -16,21 +16,21 @@
   <meta name="author" content="tianfang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="拓扑排序问题若一个由图中所有点构成的序列A满足：对于图中的每条边(x,y)，x在A中都出现在y之前，则称A是该图的一个拓扑序列。类似于学习路线。 解法为什么序列A的最前面的元素，我们把它放在最前面呢？因为没有顶点指向它，所以我们先放它。我们称指向该顶点的边数量为入度，由于它的入度为0，所以我们放它在最前面。把这个顶点拿出去后，它所指向节点的入度减1，又有新的顶点的入度为0，反复这个过程。 实现步骤">
+    <meta name="description" content="定义如果一个图可被分为两个顶点集合A和B，并且对于图的每一条边，边连接的两个顶点分别属于不同的集合，那么该图是二分图。 染色法判定染色法是将图的每一个顶点染上颜色，并且确保边所连接的顶点颜色不同，如果成功，则说明为二分图。具体步骤如下  选择起始顶点，染上颜色1 染它的相邻顶点，染上颜色2（与颜色1不同） 接着对相邻顶点的未染色进行染色  若此过程发现，该相邻顶点已染色，并且颜色相同，则无法染色成">
 <meta property="og:type" content="article">
-<meta property="og:title" content="21. 图">
-<meta property="og:url" content="http://example.com/2024/01/27/AcwingBasicCourse/21/index.html">
+<meta property="og:title" content="23. 二分图">
+<meta property="og:url" content="http://example.com/2024/02/02/AcwingBasicCourse/23/index.html">
 <meta property="og:site_name" content="tianfang&#39;s blog">
-<meta property="og:description" content="拓扑排序问题若一个由图中所有点构成的序列A满足：对于图中的每条边(x,y)，x在A中都出现在y之前，则称A是该图的一个拓扑序列。类似于学习路线。 解法为什么序列A的最前面的元素，我们把它放在最前面呢？因为没有顶点指向它，所以我们先放它。我们称指向该顶点的边数量为入度，由于它的入度为0，所以我们放它在最前面。把这个顶点拿出去后，它所指向节点的入度减1，又有新的顶点的入度为0，反复这个过程。 实现步骤">
+<meta property="og:description" content="定义如果一个图可被分为两个顶点集合A和B，并且对于图的每一条边，边连接的两个顶点分别属于不同的集合，那么该图是二分图。 染色法判定染色法是将图的每一个顶点染上颜色，并且确保边所连接的顶点颜色不同，如果成功，则说明为二分图。具体步骤如下  选择起始顶点，染上颜色1 染它的相邻顶点，染上颜色2（与颜色1不同） 接着对相邻顶点的未染色进行染色  若此过程发现，该相邻顶点已染色，并且颜色相同，则无法染色成">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-01-27T15:50:11.081Z">
-<meta property="article:modified_time" content="2024-01-30T12:04:03.068Z">
+<meta property="article:published_time" content="2024-02-02T07:54:52.612Z">
+<meta property="article:modified_time" content="2024-02-02T10:02:14.739Z">
 <meta property="article:author" content="tianfang">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>21. 图 - tianfang&#39;s blog</title>
+  <title>23. 二分图 - tianfang&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -188,7 +188,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="21. 图"></span>
+            <span id="subtitle" data-typed-text="23. 二分图"></span>
           
         </div>
 
@@ -199,8 +199,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-27 23:50" pubdate>
-          2024年1月27日 晚上
+        <time datetime="2024-02-02 15:54" pubdate>
+          2024年2月2日 下午
         </time>
       </span>
     
@@ -211,7 +211,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          921 字
+          734 字
         
       </span>
     
@@ -222,7 +222,7 @@
         
         
         
-          8 分钟
+          7 分钟
         
       </span>
     
@@ -259,35 +259,28 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">21. 图</h1>
+            <h1 id="seo-header">23. 二分图</h1>
             
             
               <div class="markdown-body">
                 
-                <h2 id="拓扑排序"><a href="#拓扑排序" class="headerlink" title="拓扑排序"></a>拓扑排序</h2><h3 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h3><p>若一个由图中所有点构成的序列A满足：对于图中的每条边<script type="math/tex">(x,y)</script>，<script type="math/tex">x</script>在<script type="math/tex">A中</script>都出现在<script type="math/tex">y</script>之前，则称<script type="math/tex">A</script>是该图的一个拓扑序列。类似于学习路线。</p>
-<h3 id="解法"><a href="#解法" class="headerlink" title="解法"></a>解法</h3><p>为什么序列A的最前面的元素，我们把它放在最前面呢？因为没有顶点指向它，所以我们先放它。我们称指向该顶点的边数量为入度，由于它的入度为0，所以我们放它在最前面。把这个顶点拿出去后，它所指向节点的入度减1，又有新的顶点的入度为0，反复这个过程。</p>
-<h3 id="实现步骤"><a href="#实现步骤" class="headerlink" title="实现步骤"></a>实现步骤</h3><ol>
-<li>预处理所有顶点的入度。</li>
-<li>将入度为0的点放入队列。</li>
-<li>不断取出队列头元素，将它指向的顶点入度减1，然后将它放入序列，再查看它指向的顶点是否有入度为0，如果有，则放入队列。</li>
-</ol>
-<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function">vector&lt;<span class="hljs-type">int</span>&gt; <span class="hljs-title">topsort</span><span class="hljs-params">()</span> </span>&#123;<br>    queue&lt;<span class="hljs-type">int</span>&gt; vertexs;<br>    vector&lt;<span class="hljs-type">int</span>&gt; result;<br>    <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> address = h[i]; address != <span class="hljs-number">-1</span>; address = next[address]) &#123;<br>            degree[value[address]]++;<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>        <span class="hljs-keyword">if</span>(degree[i] == <span class="hljs-number">0</span>) &#123;<br>            vertexs.<span class="hljs-built_in">push</span>(i);<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">while</span>(vertexs.<span class="hljs-built_in">empty</span>() == <span class="hljs-literal">false</span>) &#123;<br>        <span class="hljs-type">int</span> vertex = vertexs.<span class="hljs-built_in">front</span>();<br>        <br>        vertexs.<span class="hljs-built_in">pop</span>();<br>        result.<span class="hljs-built_in">push_back</span>(vertex);<br>        <br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = h[vertex]; i != <span class="hljs-number">-1</span>; i = next[i]) &#123;<br>            degree[value[i]]--;<br>            <br>            <span class="hljs-keyword">if</span>(degree[value[i]] == <span class="hljs-number">0</span>) &#123;<br>                vertexs.<span class="hljs-built_in">push</span>(value[i]);<br>            &#125;<br>        &#125;<br>    &#125;<br><br>    <span class="hljs-keyword">return</span> result;<br>&#125;<br></code></pre></td></tr></table></figure>
-<h2 id="最小生成树"><a href="#最小生成树" class="headerlink" title="最小生成树"></a>最小生成树</h2><h3 id="介绍"><a href="#介绍" class="headerlink" title="介绍"></a>介绍</h3><p>生成树是连接所有顶点的树，是图的子集。如果图具有权值，当生成树的边的权值总和最小时，我们称此生成树为最小生成树。</p>
-<h2 id="Prim求最小生成树"><a href="#Prim求最小生成树" class="headerlink" title="Prim求最小生成树"></a>Prim求最小生成树</h2><h3 id="介绍-1"><a href="#介绍-1" class="headerlink" title="介绍"></a>介绍</h3><p>Prim算法是一种寻找最小生成树的算法，它维护一颗最小生成树，并不断拓展。步骤如下</p>
+                <h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>如果一个图可被分为两个顶点集合A和B，并且对于图的每一条边，边连接的两个顶点分别属于不同的集合，那么该图是二分图。</p>
+<h3 id="染色法判定"><a href="#染色法判定" class="headerlink" title="染色法判定"></a>染色法判定</h3><p>染色法是将图的每一个顶点染上颜色，并且确保边所连接的顶点颜色不同，如果成功，则说明为二分图。具体步骤如下</p>
 <ol>
-<li>放入根结点，此时为大小为1的最小生成树</li>
-<li>寻找连接当前最小生成树的最小权重边，放入新顶点，此时为大小为2的最小生成树</li>
-<li>重复此操作n-1次，此时最小生成树的大小为n</li>
+<li>选择起始顶点，染上颜色1</li>
+<li>染它的相邻顶点，染上颜色2（与颜色1不同）</li>
+<li>接着对相邻顶点的未染色进行染色</li>
 </ol>
-<p>如何找到连接当前最小生成树的最小权重边。每一次放入新的顶点，遍历顶点的单向边，更新距离。与Dijkstra算法不同，该距离为到当前生成树的最小距离，而Dijkstra为到源点的最小距离。</p>
-<p>如果该最小权值边为INF，则说明其他剩余顶点到最小生成树无法连接，则无法生成最小生成树。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">prim</span><span class="hljs-params">(<span class="hljs-type">int</span> root)</span> </span>&#123;<br>    <span class="hljs-type">int</span> distances[MAX];<br>    <span class="hljs-type">bool</span> isDone[MAX];<br>    <span class="hljs-type">int</span> count = <span class="hljs-number">0</span>;<br>    <br>    ans = <span class="hljs-number">0</span>;<br>    <span class="hljs-built_in">memset</span>(isDone, <span class="hljs-number">0</span>, <span class="hljs-built_in">sizeof</span>(isDone));<br>    <span class="hljs-built_in">memset</span>(distances, <span class="hljs-number">0x3f</span>, <span class="hljs-built_in">sizeof</span>(distances));<br>    distances[root] = <span class="hljs-number">0</span>;<br>     <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>        <span class="hljs-type">int</span> vertex = <span class="hljs-number">0</span>;<br>        <br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">1</span>; j &lt;= n; j++) &#123;<br>            <span class="hljs-keyword">if</span>(isDone[j] == <span class="hljs-literal">false</span> &amp;&amp; distances[vertex] &gt; distances[j]) &#123;<br>                vertex = j;<br>            &#125;<br>        &#125;<br>            <br>        isDone[vertex] = <span class="hljs-literal">true</span>;<br>        ans += distances[vertex];<br>            <br>        <span class="hljs-keyword">if</span>(distances[vertex] != INF) &#123;<br>            count++;<br>            passed[i,j]<br>        &#125;<br>            <br>        <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> edge : edges[vertex]) &#123;<br>            distances[edge.to] = <span class="hljs-built_in">min</span>(distances[edge.to], edge.w);<br>            passed[edge.to, vertex] = <span class="hljs-number">0</span>;<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> count == n;<br>&#125;<br></code></pre></td></tr></table></figure></p>
-<h3 id="堆优化"><a href="#堆优化" class="headerlink" title="堆优化"></a>堆优化</h3><p>原算法时间复杂度为<script type="math/tex">O(V^2+E)</script>，如果使用堆优化，时间复杂度可以达到<script type="math/tex">O((V+E)logV)</script>，适用于稀疏图，不过稀疏图一般用Kruskal算法求解。</p>
-<h3 id="输出路径"><a href="#输出路径" class="headerlink" title="输出路径"></a>输出路径</h3><p>用parent[i]记录i的父亲</p>
-<h2 id="Kruskal算法求解最小生成树"><a href="#Kruskal算法求解最小生成树" class="headerlink" title="Kruskal算法求解最小生成树"></a>Kruskal算法求解最小生成树</h2><ol>
-<li>将所有边排序</li>
-<li>从小到大枚举边。若未属于同一个集合，则加入同一个集合</li>
+<p>若此过程发现，该相邻顶点已染色，并且颜色相同，则无法染色成功，不是二分图。可以使用DFS和BFS遍历所有的顶点。</p>
+<p>注意事项</p>
+<ol>
+<li>如果图中出现自环，一定不是二分图，不需要加入判定。</li>
+<li>如果该图为不连通图，也有可能是二分图，但如果只对一个起始顶点DFS，则会漏涂色，所以在DFS后，要对未染色顶点再DFS，如果还有,再DFS，直到没有未染色顶点。</li>
+<li>如果出现重边，不影响它是否为二分图，也不影响染色法判定。</li>
 </ol>
-<p>若操作n-1次，那么则生成最小生成树。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">kruskal</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-type">int</span> count;<br>    <br>    <span class="hljs-built_in">sort</span>(edges.<span class="hljs-built_in">begin</span>(), edges.<span class="hljs-built_in">end</span>(), Edge::cmp);<br>    <span class="hljs-built_in">unionfindset_init</span>();<br>    <br>    ans = <span class="hljs-number">0</span>;<br>    count = <span class="hljs-number">0</span>;<br>    <br>    <span class="hljs-keyword">for</span>(<span class="hljs-keyword">auto</span> edge : edges) &#123;<br>        <span class="hljs-keyword">if</span>(count == n <span class="hljs-number">-1</span>) &#123;<br>            <span class="hljs-keyword">break</span>;<br>        &#125;<br>        <br>        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">unionfindset_find</span>(edge.from) != <span class="hljs-built_in">unionfindset_find</span>(edge.to)) &#123;<br>            <span class="hljs-built_in">unionfindset_merge</span>(edge.from, edge.to);<br>            count++;<br>            ans += edge.weight;<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> count == n - <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure><br>能不能适用于重边，负边权，有向图，无向图，负环</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isBipartiteDFS</span><span class="hljs-params">(<span class="hljs-type">int</span> u, <span class="hljs-type">int</span> c)</span> </span>&#123;<br>    color[u] = c; <br><br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = h[u]; i != <span class="hljs-number">-1</span>; i = next[i]) &#123;   <br>        <span class="hljs-keyword">if</span>(color[value[i]] == <span class="hljs-number">0</span> &amp;&amp; <span class="hljs-built_in">isBipartiteDFS</span>(value[i], <span class="hljs-number">3</span> - c) == <span class="hljs-literal">false</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(color[value[i]] == c)&#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br><br><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">isBipartite</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>        <span class="hljs-keyword">if</span>(color[i] != <span class="hljs-number">0</span>) &#123;<br>            <span class="hljs-keyword">continue</span>;<br>        &#125;<br>        <br>        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">isBipartiteDFS</span>(i, <span class="hljs-number">1</span>) == <span class="hljs-literal">false</span>) &#123;<br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="匹配与最大匹配"><a href="#匹配与最大匹配" class="headerlink" title="匹配与最大匹配"></a>匹配与最大匹配</h3><p>给定一个二分图G，在G的一个子图M中，M的边集{E}中的任意两条边都不依附于同一个顶点，则称M是一个匹配。如果匹配的边数最多，则称M为最大匹配。例如，分配任务给几个人，但一个人只能做一个任务，一个人由于能力只能做特定的几个任务，如何分配使得任务做的最多呢？</p>
+<h3 id="匈牙利算法求最大匹配"><a href="#匈牙利算法求最大匹配" class="headerlink" title="匈牙利算法求最大匹配"></a>匈牙利算法求最大匹配</h3><p>首先需要明白一个概念，交替路径，从非匹配点开始走非匹配边，匹配边，非匹配边，….，非匹配边。增广路径，从非匹配点走交替路径最终到达非匹配点，容易发现非匹配边比匹配边数量大1，若将二者交换，则匹配数量加1。<br>匈牙利算法基本思想：通过寻找增广路径，把增广路径中的匹配边和非匹配边的相互交换，这样就会多出一条匹配边，直到找不到增广路径为止。<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">bool</span> <span class="hljs-title">find</span><span class="hljs-params">(<span class="hljs-type">int</span> u)</span> </span>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = h[u]; i != <span class="hljs-number">-1</span>; i = next[i]) &#123;<br>        <span class="hljs-keyword">if</span>(isUsed[value[i]]) &#123;<br>            <span class="hljs-keyword">continue</span>;<br>        &#125; <br>        isUsed[value[i]] = <span class="hljs-literal">true</span>;<br>        <span class="hljs-keyword">if</span>(matchTo[value[i]] == <span class="hljs-number">0</span> || <span class="hljs-built_in">find</span>(matchTo[value[i]])) &#123;<br>            matchTo[value[i]] = u;<br>            <br>            <span class="hljs-keyword">return</span> <span class="hljs-literal">true</span>;<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;<br>&#125;<br><br><br><span class="hljs-function"><span class="hljs-type">int</span> <span class="hljs-title">match</span><span class="hljs-params">()</span> </span>&#123;<br>    <span class="hljs-type">int</span> count = <span class="hljs-number">0</span>;<br>    <br>    <span class="hljs-built_in">memset</span>(matchTo, <span class="hljs-number">0</span>, <span class="hljs-built_in">sizeof</span>(matchTo));<br>    <br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n1; i++) &#123;<br>        <span class="hljs-built_in">memset</span>(isUsed, <span class="hljs-number">0</span>, <span class="hljs-built_in">sizeof</span>(isUsed));<br>        <span class="hljs-keyword">if</span>(<span class="hljs-built_in">find</span>(i)) &#123;<br>            count++;<br>        &#125;<br>    &#125;<br>    <br>    <span class="hljs-keyword">return</span> count;<br>&#125;<br></code></pre></td></tr></table></figure></p>
 
                 
               </div>
@@ -305,8 +298,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>21. 图</div>
-      <div>http://example.com/2024/01/27/AcwingBasicCourse/21/</div>
+      <div>23. 二分图</div>
+      <div>http://example.com/2024/02/02/AcwingBasicCourse/23/</div>
     </div>
     <div class="license-meta">
       
@@ -318,7 +311,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年1月27日</div>
+          <div>2024年2月2日</div>
         </div>
       
       
@@ -350,9 +343,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/27/AcwingBasicCourse/20/" title="20. 树">
+                      <a href="/2024/02/02/AcwingBasicCourse/math4/" title="19. 扩展欧几里得算法">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">20. 树</span>
+                        <span class="hidden-mobile">19. 扩展欧几里得算法</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -360,8 +353,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/27/AcwingBasicCourse/19/" title="19. BFS初步">
-                        <span class="hidden-mobile">19. BFS初步</span>
+                      <a href="/2024/01/30/AcwingBasicCourse/22/" title="23. 图的最短路径">
+                        <span class="hidden-mobile">23. 图的最短路径</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
