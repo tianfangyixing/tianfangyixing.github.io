@@ -216,6 +216,138 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/02/18/AcwingBasicCourse/dp6/" target="_self">
+          25. 记忆化搜索DP
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/18/AcwingBasicCourse/dp6/" target="_self">
+        <div>
+          题目：没有上司的舞会问题描述 解决方案设dp[i][0]为只考虑i号职员及其它的下属，不选i号职员的最大快乐值，设dp[i][1]为只考虑i号职员及其它的下属，选i号职员的最大快乐值。  如果不选i号职员，那么可以选它的直接下属，也可以不选它的直接下属。 如果选i号职员，那么不可以选它的直接下属。  得出公式  \begin{align*}   & dp[i][0]=\sum_{j=1}^{c}m
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-02-18 11:31" pubdate>
+              2024-02-18
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/02/18/AcwingBasicCourse/dp5/" target="_self">
+          24. 状态压缩dp
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/18/AcwingBasicCourse/dp5/" target="_self">
+        <div>
+          题目问题描述 解决方案由于横放方案=所有方案，因此只要考虑横放方案。定义dp[i][j]为已经放置好前i-1列，j的二进制表示形式代表了第i列的摆放情况。如果位等于1，则表示该处横放，并向下一列延伸。如果位等于0，表示竖着放或上一列的延伸。已经考虑好第i-1列的摆放，想要将第i列的摆放成j状态，那么就要考虑是否会与第i-1列与第i列冲突dp[i-1]设i-1列状态为k，i列状态为j  不能有重叠的
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-02-18 11:31" pubdate>
+              2024-02-18
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/02/04/AcwingBasicCourse/dp4/" target="_self">
+          23. 计数类DP
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/04/AcwingBasicCourse/dp4/" target="_self">
+        <div>
+          题目问题描述一个正整数n可以表示成若干个正整数之和，形如：n=n_{1}+n_{2}+…+n_{k}，其中 n_{1} \ge … \ge n_{k},k≥1。我们将这样的一种表示称为正整数n的一种划分。现在给定一个正整数n，请你求出n共有多少种不同的划分方法。 完全背包解法有n种物品，1,2,…,n，有无限件可以用，容量为n，有多少种组合方案。容易得到状态转移方程： dp[i][j] = \su
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-02-04 18:52" pubdate>
+              2024-02-04
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/02/04/AcwingBasicCourse/dp3/" target="_self">
+          23. 区间DP
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/04/AcwingBasicCourse/dp3/" target="_self">
+        <div>
+          石子合并问题描述设有 N堆石子排成一排，其编号为 1,2,3,…,N。每堆石子有一定的质量，可以用一个整数来描述，现在要将这 N堆石子合并成为一堆。每次只能合并相邻的两堆，合并的代价为这两堆石子的质量之和，合并后与这两堆石子相邻的石子将和新堆相邻，合并时由于选择的顺序不同，合并的总代价也不相同。 解决方案定义dp[i][j]为什么合并从i到j的所有石子的最小代价,最后一步是合并两堆石子，加起来就是
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-02-04 18:45" pubdate>
+              2024-02-04
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/02/02/AcwingBasicCourse/dp2/" target="_self">
           23. 线性DP
         </a>
@@ -408,143 +540,11 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/27/AcwingBasicCourse/21/" target="_self">
-          21. 图
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/27/AcwingBasicCourse/21/" target="_self">
-        <div>
-          拓扑排序问题若一个由图中所有点构成的序列A满足：对于图中的每条边(x,y)，x在A中都出现在y之前，则称A是该图的一个拓扑序列。类似于学习路线。 解法为什么序列A的最前面的元素，我们把它放在最前面呢？因为没有顶点指向它，所以我们先放它。我们称指向该顶点的边数量为入度，由于它的入度为0，所以我们放它在最前面。把这个顶点拿出去后，它所指向节点的入度减1，又有新的顶点的入度为0，反复这个过程。 实现步骤
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-27 23:50" pubdate>
-              2024-01-27
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/27/AcwingBasicCourse/19/" target="_self">
-          19. BFS初步
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/27/AcwingBasicCourse/19/" target="_self">
-        <div>
-          BFS,即宽度优先搜索，是每次只访问所有同一深度的节点，从深度小的访问到深度大的节点。算法步骤一般如下:  放入起点 不断取出队头，并将它的未访问过的相邻可访问节点放入队列 当队列为空时，BFS完成。  例题：给定一个n \times m的二维整数数组，用来表示一个迷宫，数组中只包含0或1，其中0表示可以走的路，1表示不可通过的墙壁。最初，有一个人位于左上角(1,1)处，已知该人每次可以向上、下、
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-27 22:28" pubdate>
-              2024-01-27
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/27/AcwingBasicCourse/18/" target="_self">
-          18. DFS初步
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/27/AcwingBasicCourse/18/" target="_self">
-        <div>
-          深度优先搜索，DFS，不断递归下去，直到不可以走，再回溯上来。一条路走到底，这也就是它为什么称之为深度优先。实现步骤为：  选定一个状态 递归它的可访问状态 回溯,再递归下一个可访问状态123456void dfs() &#123;	// 是否已走到底	// 遍历可转移状态，每次递归后必须回溯&#125;   一般最好画出状态空间，然后好确定某一个状态的可访问状态，什么时候走到底。例题：给定一个整
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-27 18:26" pubdate>
-              2024-01-27
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/18/AcwingBasicCourse/math3/" target="_self">
-          20. 欧拉函数
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/18/AcwingBasicCourse/math3/" target="_self">
-        <div>
-          欧拉函数欧拉函数，是1到n与它互质的数的个数，记作\varphi(n)。例如\varphi(9) = 6 因为1,2,4,5,7,8与9互质。 性质1 \varphi(p^k)=p^k-p^{k-1}对于质数p，p^k中不与它互质的数有p,2p,3p,4p,..,p^{k-1} \times p，也就是p^{k-1}个，又1~p^k有p^k个数，那么\varphi(p^k)=p^k-p^{k-1}
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-18 19:46" pubdate>
-              2024-01-18
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
     <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
     </span>
   </nav>
 

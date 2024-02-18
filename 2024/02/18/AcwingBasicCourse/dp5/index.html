@@ -16,21 +16,24 @@
   <meta name="author" content="tianfang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="问题1：输入一个长度为n的整数序列。接下来再输入m个询问，每个询问输入一对l,r。对于每个询问，输出原序列中从第l个数到第r个数的和。 如果直接暴力求解，注意到在m次查询中，会对某些元素进行重复的求和。 不妨构造前缀和数组 presum[n] &#x3D; nums[1]+nums[2]+…+nums[n]，第l个数到第r个数的和可化为presum[r] - presum[l-1]。那么问题的求解就有两个步">
+    <meta name="description" content="题目问题描述 解决方案由于横放方案&#x3D;所有方案，因此只要考虑横放方案。定义dp[i][j]为已经放置好前i-1列，j的二进制表示形式代表了第i列的摆放情况。如果位等于1，则表示该处横放，并向下一列延伸。如果位等于0，表示竖着放或上一列的延伸。已经考虑好第i-1列的摆放，想要将第i列的摆放成j状态，那么就要考虑是否会与第i-1列与第i列冲突dp[i-1]设i-1列状态为k，i列状态为j  不能有重叠的">
 <meta property="og:type" content="article">
-<meta property="og:title" content="3. 前缀和与差分">
-<meta property="og:url" content="http://example.com/2024/01/06/AcwingBasicCourse/3/index.html">
+<meta property="og:title" content="24. 状态压缩dp">
+<meta property="og:url" content="http://example.com/2024/02/18/AcwingBasicCourse/dp5/index.html">
 <meta property="og:site_name" content="tianfang&#39;s blog">
-<meta property="og:description" content="问题1：输入一个长度为n的整数序列。接下来再输入m个询问，每个询问输入一对l,r。对于每个询问，输出原序列中从第l个数到第r个数的和。 如果直接暴力求解，注意到在m次查询中，会对某些元素进行重复的求和。 不妨构造前缀和数组 presum[n] &#x3D; nums[1]+nums[2]+…+nums[n]，第l个数到第r个数的和可化为presum[r] - presum[l-1]。那么问题的求解就有两个步">
+<meta property="og:description" content="题目问题描述 解决方案由于横放方案&#x3D;所有方案，因此只要考虑横放方案。定义dp[i][j]为已经放置好前i-1列，j的二进制表示形式代表了第i列的摆放情况。如果位等于1，则表示该处横放，并向下一列延伸。如果位等于0，表示竖着放或上一列的延伸。已经考虑好第i-1列的摆放，想要将第i列的摆放成j状态，那么就要考虑是否会与第i-1列与第i列冲突dp[i-1]设i-1列状态为k，i列状态为j  不能有重叠的">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-01-05T16:52:56.598Z">
-<meta property="article:modified_time" content="2024-02-04T10:42:43.577Z">
+<meta property="og:image" content="http://example.com/images/24/1.png">
+<meta property="og:image" content="http://example.com/images/24/2.png">
+<meta property="article:published_time" content="2024-02-18T03:31:07.765Z">
+<meta property="article:modified_time" content="2024-02-18T14:21:38.486Z">
 <meta property="article:author" content="tianfang">
 <meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="http://example.com/images/24/1.png">
   
   
   
-  <title>3. 前缀和与差分 - tianfang&#39;s blog</title>
+  <title>24. 状态压缩dp - tianfang&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -188,7 +191,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="3. 前缀和与差分"></span>
+            <span id="subtitle" data-typed-text="24. 状态压缩dp"></span>
           
         </div>
 
@@ -199,8 +202,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-06 00:52" pubdate>
-          2024年1月6日 凌晨
+        <time datetime="2024-02-18 11:31" pubdate>
+          2024年2月18日 中午
         </time>
       </span>
     
@@ -211,7 +214,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          881 字
+          534 字
         
       </span>
     
@@ -222,7 +225,7 @@
         
         
         
-          8 分钟
+          5 分钟
         
       </span>
     
@@ -259,33 +262,29 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">3. 前缀和与差分</h1>
+            <h1 id="seo-header">24. 状态压缩dp</h1>
             
             
               <div class="markdown-body">
                 
-                <p><strong>问题1：输入一个长度为n的整数序列。接下来再输入m个询问，每个询问输入一对l,r。对于每个询问，输出原序列中从第l个数到第r个数的和。</strong></p>
-<p>如果直接暴力求解，注意到在m次查询中，会对某些元素进行重复的求和。</p>
-<p>不妨构造前缀和数组 <script type="math/tex">presum[n] = nums[1]+nums[2]+…+nums[n]</script>，第l个数到第r个数的和可化为<script type="math/tex">presum[r] - presum[l-1]</script>。那么问题的求解就有两个步骤：</p>
+                <h2 id="题目"><a href="#题目" class="headerlink" title="题目"></a>题目</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p><img src="/images/24/1.png" srcset="/img/loading.gif" lazyload alt="题目"></p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>由于横放方案=所有方案，因此只要考虑横放方案。定义<script type="math/tex">dp[i][j]</script>为已经放置好前<script type="math/tex">i-1</script>列，<script type="math/tex">j</script>的二进制表示形式代表了第<script type="math/tex">i</script>列的摆放情况。如果位等于<script type="math/tex">1</script>，则表示该处横放，并向下一列延伸。如果位等于<script type="math/tex">0</script>，表示竖着放或上一列的延伸。<br>已经考虑好第i-1列的摆放，想要将第i列的摆放成j状态，那么就要考虑是否会与第i-1列与第i列冲突<br>dp[i-1]<br>设i-1列状态为k，i列状态为j</p>
 <ol>
-<li>构造前缀和数组</li>
+<li>不能有重叠的横块,即 <script type="math/tex">j & k == 0</script></li>
+<li>要全部摆放，即偶数个连续的小空块</li>
 </ol>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>   s[i] = s[i - <span class="hljs-number">1</span>] + datas[i];<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>2. 利用前缀和数组求出给定序列的和</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, s[r] - s[l - <span class="hljs-number">1</span>]);<br></code></pre></td></tr></table></figure>
-<p>显然当查询次数很多时，后者做法较省时间。</p>
-<p><strong>问题2: 输入一个n行m列的整数矩阵，再输入q个询问，每个询问包含四个整数x1,y1,x2,y2，表示一个子矩阵的左上角坐标和右下角坐标。对于每个询问输出子矩阵中所有数的和。</strong></p>
-<p>我们受问题1的启发，希望构造二维前缀和数组，求解子矩阵的和。</p>
-<p>presum[x][y] = num[x][y] + presum[x][y - 1] + presum[x - 1][y] - presum[x - 1][y -1]</p>
-<p>得到二维前缀和数组，我们该如何求解子矩阵的和呢？</p>
-<p>子矩阵的和为 presum[x2][y2] - presum[x2][y1 -1] - presum[x1 - 1][y2] + presum[x1 - 1][y1 - 1]</p>
-<p><strong>问题3: 输入一个长度为n的整数序列。接下来输入m个操作，每个操作包含三个整数l,r,c，表示将序列中[l,r]之间的每个数加上c。</strong></p>
-<p>若直接进行暴力求解，会算m*(r-l+1)次。注意到若进行多次操作，对多个区域进行多次加数，实际上可一次性加这些数的和，存在时间上的优化可能性。若给定的整数序列为nums的前缀和数组，则称nums为presum的差分数组。现有前缀和数组，如何构造出差分数组。注意到 presum[n] = nums[1]+nums[2]+…+nums[n]，则nums[n] = presum[n] - presum[n-1]。</p>
-<p>有了差分数组，我们对nums[l]加上c，显然其对应的前缀和数组从l到n均有加c。为了使得r+1到n不加上c，再对nums[r + 1]减上c。此时，其对应的前缀和数组从l到r均有加c，而且其他位置元素不变。再根据m次操作后的差分数组，可得到其对应的前缀和数组，也就是题目所求的整数序列。</p>
-<p><strong>问题4: 输入一个n行m列的整数矩阵，再输入q个操作，每个操作包含五个整数x1,y1,x2,y2,c，其中(x1,y1)和(x2,y2)表示一个子矩阵的左上角坐标和右下角坐标。每个操作都要将选中的子矩阵中的每个元素的值加上c。请你将进行完所有操作后的矩阵输出。</strong></p>
-<p>受问题3启发，想由二维前缀和数组得到二维差分数组。注意到prenum[x][y] = num[x][y] + prenum[x][y - 1] + prenum[x - 1][y] - prenum[x - 1][y -1], 得到nums[x][y] = prenum[x][y] - prenum[x-1][y] - prenum[x][y-1] + prenum[x-1][y-1]。</p>
-<p>得到二维差分数组后，该如何对二维差分数组操作，使得其对应的二维前缀和数组满足操作后要求。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp">nums[x1][y1] +=c<br>nums[x2+<span class="hljs-number">1</span>][y1] -=c<br>nums[x1][y2+<span class="hljs-number">1</span>] -= c<br>nums[x2+<span class="hljs-number">1</span>][y2+<span class="hljs-number">1</span>] +=c<br></code></pre></td></tr></table></figure>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-function"><span class="hljs-type">void</span> <span class="hljs-title">refreshIsLegal</span><span class="hljs-params">(<span class="hljs-type">int</span> N)</span> </span>&#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= <span class="hljs-built_in">pow</span>(<span class="hljs-number">2</span>, N) - <span class="hljs-number">1</span>; j++) &#123;<br>        <span class="hljs-type">int</span> count = <span class="hljs-number">0</span>;<br>        <span class="hljs-type">int</span> temp = j;<br>        <br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= N; i++) &#123;<br>            <span class="hljs-keyword">if</span>((temp &amp; <span class="hljs-number">1</span>) == <span class="hljs-number">0</span>) &#123;<br>                count++;<br>            &#125; <span class="hljs-keyword">else</span> &#123;<br>                <span class="hljs-keyword">if</span>(count % <span class="hljs-number">2</span> != <span class="hljs-number">0</span>) &#123;<br>                    isLegal[j] = <span class="hljs-literal">false</span>;<br>                    <span class="hljs-keyword">continue</span>;<br>                &#125;<br>                <br>                count = <span class="hljs-number">0</span>;<br>            &#125;<br>            <br>            temp = temp &gt;&gt; <span class="hljs-number">1</span>;<br>        &#125;<br>        <br>        <span class="hljs-keyword">if</span>(count % <span class="hljs-number">2</span> == <span class="hljs-number">0</span>) &#123;<br>            isLegal[j] = <span class="hljs-literal">true</span>;<br>        &#125; <span class="hljs-keyword">else</span> &#123;<br>            isLegal[j] = <span class="hljs-literal">false</span>;<br>        &#125;<br>    &#125;<br>&#125;<br><br><span class="hljs-built_in">refreshIsLegal</span>(N);<br>dp[<span class="hljs-number">0</span>][<span class="hljs-number">0</span>] = <span class="hljs-number">1</span>;<br>        <br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= M; i++) &#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> j = <span class="hljs-number">0</span>; j &lt;= <span class="hljs-built_in">pow</span>(<span class="hljs-number">2</span>, N) - <span class="hljs-number">1</span>; j++) &#123;<br>        dp[i][j] = <span class="hljs-number">0</span>;<br>                <br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> leftJ = <span class="hljs-number">0</span>; leftJ &lt;= <span class="hljs-built_in">pow</span>(<span class="hljs-number">2</span>, N) - <span class="hljs-number">1</span>; leftJ++) &#123;<br>                    <span class="hljs-keyword">if</span>(isLegal[leftJ | j] &amp;&amp; (j &amp; leftJ) == <span class="hljs-number">0</span> ) &#123;<br>                dp[i][j] += dp[i<span class="hljs-number">-1</span>][leftJ];<br>            &#125;<br>        &#125;<br>    &#125;<br>&#125;<br>        <br>cout &lt;&lt; dp[M][<span class="hljs-number">0</span>] &lt;&lt; endl;<br></code></pre></td></tr></table></figure>
+<h2 id="最短Hamilton路径"><a href="#最短Hamilton路径" class="headerlink" title="最短Hamilton路径"></a>最短Hamilton路径</h2><h3 id="问题描述-1"><a href="#问题描述-1" class="headerlink" title="问题描述"></a>问题描述</h3><p><img src="/images/24/2.png" srcset="/img/loading.gif" lazyload alt="题目"></p>
+<h3 id="解决方案-1"><a href="#解决方案-1" class="headerlink" title="解决方案"></a>解决方案</h3><p>定义dp[i][j]为从0到终点j，路径上经历过的点集为状态i的最小距离。状态i，其二进制表示，如果第j位为0，则代表不经过j点，若为1，则经过j点。下面为一个实例<br><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">0</span>-&gt;<span class="hljs-number">1</span>-&gt;<span class="hljs-number">2</span>-&gt;<span class="hljs-number">3</span>-&gt;<span class="hljs-number">5</span><br><span class="hljs-attribute">0</span>-&gt;<span class="hljs-number">1</span>-&gt;<span class="hljs-number">3</span>-&gt;<span class="hljs-number">2</span>-&gt;<span class="hljs-number">5</span><br><span class="hljs-attribute">0</span>-&gt;<span class="hljs-number">2</span>-&gt;<span class="hljs-number">1</span>-&gt;<span class="hljs-number">3</span>-&gt;<span class="hljs-number">5</span><br><span class="hljs-attribute">0</span>-&gt;<span class="hljs-number">2</span>-&gt;<span class="hljs-number">3</span>-&gt;<span class="hljs-number">1</span>-&gt;<span class="hljs-number">5</span><br><span class="hljs-attribute">0</span>-&gt;<span class="hljs-number">3</span>-&gt;<span class="hljs-number">1</span>-&gt;<span class="hljs-number">2</span>-&gt;<span class="hljs-number">5</span><br><span class="hljs-attribute">0</span>-&gt;<span class="hljs-number">3</span>-&gt;<span class="hljs-number">2</span>-&gt;<span class="hljs-number">1</span>-&gt;<span class="hljs-number">5</span><br></code></pre></td></tr></table></figure><br>点集都相同，但是由于选取了不同的倒数第二个节点k，使得距离不同。实际上走点集i，到终点j的最小距离就是从0走到倒数第二个节点k，再从k走到j</p>
+<script type="math/tex; mode=display">dp[i][j]=min(dp[i \oplus (1 << j)][k] + a[k][j],dp[i][j])</script><p>题目所求答案为<script type="math/tex">dp[(1 << n) - 1][n-1]</script></p>
+<p>状态合法</p>
+<ol>
+<li>点集经历过0，j，</li>
+<li>k!=j并且点集中经过k</li>
+</ol>
+<p>状态遍历</p>
+<p><script type="math/tex">i \oplus (1 << j)</script>比<script type="math/tex">i</script>小，则从小到大遍历状态，并且j需要用到所有状态，所以先遍历i，再遍历j</p>
+
                 
               </div>
             
@@ -302,8 +301,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>3. 前缀和与差分</div>
-      <div>http://example.com/2024/01/06/AcwingBasicCourse/3/</div>
+      <div>24. 状态压缩dp</div>
+      <div>http://example.com/2024/02/18/AcwingBasicCourse/dp5/</div>
     </div>
     <div class="license-meta">
       
@@ -315,7 +314,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年1月6日</div>
+          <div>2024年2月18日</div>
         </div>
       
       
@@ -347,9 +346,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/07/AcwingBasicCourse/6/" title="6. 区间和（离散化）">
+                      <a href="/2024/02/18/AcwingBasicCourse/dp6/" title="25. 记忆化搜索DP">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">6. 区间和（离散化）</span>
+                        <span class="hidden-mobile">25. 记忆化搜索DP</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -357,8 +356,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/06/AcwingBasicCourse/4/" title="4. QUICKSORT">
-                        <span class="hidden-mobile">4. QUICKSORT</span>
+                      <a href="/2024/02/04/AcwingBasicCourse/dp4/" title="23. 计数类DP">
+                        <span class="hidden-mobile">23. 计数类DP</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>

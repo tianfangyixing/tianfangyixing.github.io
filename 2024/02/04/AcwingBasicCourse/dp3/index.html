@@ -16,21 +16,21 @@
   <meta name="author" content="tianfang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="问题1：输入一个长度为n的整数序列。接下来再输入m个询问，每个询问输入一对l,r。对于每个询问，输出原序列中从第l个数到第r个数的和。 如果直接暴力求解，注意到在m次查询中，会对某些元素进行重复的求和。 不妨构造前缀和数组 presum[n] &#x3D; nums[1]+nums[2]+…+nums[n]，第l个数到第r个数的和可化为presum[r] - presum[l-1]。那么问题的求解就有两个步">
+    <meta name="description" content="石子合并问题描述设有 N堆石子排成一排，其编号为 1,2,3,…,N。每堆石子有一定的质量，可以用一个整数来描述，现在要将这 N堆石子合并成为一堆。每次只能合并相邻的两堆，合并的代价为这两堆石子的质量之和，合并后与这两堆石子相邻的石子将和新堆相邻，合并时由于选择的顺序不同，合并的总代价也不相同。 解决方案定义dp[i][j]为什么合并从i到j的所有石子的最小代价,最后一步是合并两堆石子，加起来就是">
 <meta property="og:type" content="article">
-<meta property="og:title" content="3. 前缀和与差分">
-<meta property="og:url" content="http://example.com/2024/01/06/AcwingBasicCourse/3/index.html">
+<meta property="og:title" content="23. 区间DP">
+<meta property="og:url" content="http://example.com/2024/02/04/AcwingBasicCourse/dp3/index.html">
 <meta property="og:site_name" content="tianfang&#39;s blog">
-<meta property="og:description" content="问题1：输入一个长度为n的整数序列。接下来再输入m个询问，每个询问输入一对l,r。对于每个询问，输出原序列中从第l个数到第r个数的和。 如果直接暴力求解，注意到在m次查询中，会对某些元素进行重复的求和。 不妨构造前缀和数组 presum[n] &#x3D; nums[1]+nums[2]+…+nums[n]，第l个数到第r个数的和可化为presum[r] - presum[l-1]。那么问题的求解就有两个步">
+<meta property="og:description" content="石子合并问题描述设有 N堆石子排成一排，其编号为 1,2,3,…,N。每堆石子有一定的质量，可以用一个整数来描述，现在要将这 N堆石子合并成为一堆。每次只能合并相邻的两堆，合并的代价为这两堆石子的质量之和，合并后与这两堆石子相邻的石子将和新堆相邻，合并时由于选择的顺序不同，合并的总代价也不相同。 解决方案定义dp[i][j]为什么合并从i到j的所有石子的最小代价,最后一步是合并两堆石子，加起来就是">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2024-01-05T16:52:56.598Z">
-<meta property="article:modified_time" content="2024-02-04T10:42:43.577Z">
+<meta property="article:published_time" content="2024-02-04T10:45:25.019Z">
+<meta property="article:modified_time" content="2024-02-18T14:21:40.833Z">
 <meta property="article:author" content="tianfang">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>3. 前缀和与差分 - tianfang&#39;s blog</title>
+  <title>23. 区间DP - tianfang&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -188,7 +188,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="3. 前缀和与差分"></span>
+            <span id="subtitle" data-typed-text="23. 区间DP"></span>
           
         </div>
 
@@ -199,8 +199,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2024-01-06 00:52" pubdate>
-          2024年1月6日 凌晨
+        <time datetime="2024-02-04 18:45" pubdate>
+          2024年2月4日 晚上
         </time>
       </span>
     
@@ -211,7 +211,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          881 字
+          378 字
         
       </span>
     
@@ -222,7 +222,7 @@
         
         
         
-          8 分钟
+          4 分钟
         
       </span>
     
@@ -259,33 +259,16 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">3. 前缀和与差分</h1>
+            <h1 id="seo-header">23. 区间DP</h1>
             
             
               <div class="markdown-body">
                 
-                <p><strong>问题1：输入一个长度为n的整数序列。接下来再输入m个询问，每个询问输入一对l,r。对于每个询问，输出原序列中从第l个数到第r个数的和。</strong></p>
-<p>如果直接暴力求解，注意到在m次查询中，会对某些元素进行重复的求和。</p>
-<p>不妨构造前缀和数组 <script type="math/tex">presum[n] = nums[1]+nums[2]+…+nums[n]</script>，第l个数到第r个数的和可化为<script type="math/tex">presum[r] - presum[l-1]</script>。那么问题的求解就有两个步骤：</p>
-<ol>
-<li>构造前缀和数组</li>
-</ol>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>   s[i] = s[i - <span class="hljs-number">1</span>] + datas[i];<br>&#125;<br></code></pre></td></tr></table></figure>
-<p>2. 利用前缀和数组求出给定序列的和</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs cpp"><span class="hljs-built_in">printf</span>(<span class="hljs-string">&quot;%d\n&quot;</span>, s[r] - s[l - <span class="hljs-number">1</span>]);<br></code></pre></td></tr></table></figure>
-<p>显然当查询次数很多时，后者做法较省时间。</p>
-<p><strong>问题2: 输入一个n行m列的整数矩阵，再输入q个询问，每个询问包含四个整数x1,y1,x2,y2，表示一个子矩阵的左上角坐标和右下角坐标。对于每个询问输出子矩阵中所有数的和。</strong></p>
-<p>我们受问题1的启发，希望构造二维前缀和数组，求解子矩阵的和。</p>
-<p>presum[x][y] = num[x][y] + presum[x][y - 1] + presum[x - 1][y] - presum[x - 1][y -1]</p>
-<p>得到二维前缀和数组，我们该如何求解子矩阵的和呢？</p>
-<p>子矩阵的和为 presum[x2][y2] - presum[x2][y1 -1] - presum[x1 - 1][y2] + presum[x1 - 1][y1 - 1]</p>
-<p><strong>问题3: 输入一个长度为n的整数序列。接下来输入m个操作，每个操作包含三个整数l,r,c，表示将序列中[l,r]之间的每个数加上c。</strong></p>
-<p>若直接进行暴力求解，会算m*(r-l+1)次。注意到若进行多次操作，对多个区域进行多次加数，实际上可一次性加这些数的和，存在时间上的优化可能性。若给定的整数序列为nums的前缀和数组，则称nums为presum的差分数组。现有前缀和数组，如何构造出差分数组。注意到 presum[n] = nums[1]+nums[2]+…+nums[n]，则nums[n] = presum[n] - presum[n-1]。</p>
-<p>有了差分数组，我们对nums[l]加上c，显然其对应的前缀和数组从l到n均有加c。为了使得r+1到n不加上c，再对nums[r + 1]减上c。此时，其对应的前缀和数组从l到r均有加c，而且其他位置元素不变。再根据m次操作后的差分数组，可得到其对应的前缀和数组，也就是题目所求的整数序列。</p>
-<p><strong>问题4: 输入一个n行m列的整数矩阵，再输入q个操作，每个操作包含五个整数x1,y1,x2,y2,c，其中(x1,y1)和(x2,y2)表示一个子矩阵的左上角坐标和右下角坐标。每个操作都要将选中的子矩阵中的每个元素的值加上c。请你将进行完所有操作后的矩阵输出。</strong></p>
-<p>受问题3启发，想由二维前缀和数组得到二维差分数组。注意到prenum[x][y] = num[x][y] + prenum[x][y - 1] + prenum[x - 1][y] - prenum[x - 1][y -1], 得到nums[x][y] = prenum[x][y] - prenum[x-1][y] - prenum[x][y-1] + prenum[x-1][y-1]。</p>
-<p>得到二维差分数组后，该如何对二维差分数组操作，使得其对应的二维前缀和数组满足操作后要求。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs cpp">nums[x1][y1] +=c<br>nums[x2+<span class="hljs-number">1</span>][y1] -=c<br>nums[x1][y2+<span class="hljs-number">1</span>] -= c<br>nums[x2+<span class="hljs-number">1</span>][y2+<span class="hljs-number">1</span>] +=c<br></code></pre></td></tr></table></figure>
+                <h2 id="石子合并"><a href="#石子合并" class="headerlink" title="石子合并"></a>石子合并</h2><h3 id="问题描述"><a href="#问题描述" class="headerlink" title="问题描述"></a>问题描述</h3><p>设有 N堆石子排成一排，其编号为 1,2,3,…,N。每堆石子有一定的质量，可以用一个整数来描述，现在要将这 N堆石子合并成为一堆。每次只能合并相邻的两堆，合并的代价为这两堆石子的质量之和，合并后与这两堆石子相邻的石子将和新堆相邻，合并时由于选择的顺序不同，合并的总代价也不相同。</p>
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>定义<script type="math/tex">dp[i][j]</script>为什么合并从i到j的所有石子的最小代价,最后一步是合并两堆石子，加起来就是i到j的所有石子，假设左堆石子的右终点是k，那么</p>
+<script type="math/tex; mode=display">dp[i][j] = dp[i][k] + dp[k+1][j] + \sum_{i=i}^{j}cost_{i}</script><p>可以用前缀和简化cost的计算，得到</p>
+<script type="math/tex; mode=display">dp[i][j] = dp[i][k] + dp[k+1][j] + presum[j] - presum[i-1]</script><p>从状态转移方程得到，当前长度的状态依赖于更小长度的状态，因此需要按照长度从小到大计算。<br>容易写出代码<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><code class="hljs c++">presum[<span class="hljs-number">0</span>] = <span class="hljs-number">0</span>;<br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>    <span class="hljs-type">int</span> number;<br>        <br>    cin &gt;&gt; number;<br>        <br>    presum[i] = number + presum[i<span class="hljs-number">-1</span>];<br>&#125;<br><br>    <br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> i = <span class="hljs-number">1</span>; i &lt;= n; i++) &#123;<br>    dp[i][i] = <span class="hljs-number">0</span>;<br>&#125;<br>    <br><span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> len = <span class="hljs-number">2</span>; len &lt;= n; len++) &#123;<br>    <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> start = <span class="hljs-number">1</span>; start + len - <span class="hljs-number">1</span> &lt;= n; start++) &#123;<br>        <span class="hljs-type">int</span> end = start + len - <span class="hljs-number">1</span>;<br>            <br>        dp[start][end] = <span class="hljs-number">0x3f3f3f3f</span>;<br>            <br>        <span class="hljs-keyword">for</span>(<span class="hljs-type">int</span> k = start; k &lt;= end<span class="hljs-number">-1</span>; k++) &#123;<br>            dp[start][end] = <span class="hljs-built_in">min</span>(dp[start][end], dp[start][k] + dp[k+<span class="hljs-number">1</span>][end] + presum[end] - presum[start - <span class="hljs-number">1</span>]);   <br>        &#125;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+
                 
               </div>
             
@@ -302,8 +285,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>3. 前缀和与差分</div>
-      <div>http://example.com/2024/01/06/AcwingBasicCourse/3/</div>
+      <div>23. 区间DP</div>
+      <div>http://example.com/2024/02/04/AcwingBasicCourse/dp3/</div>
     </div>
     <div class="license-meta">
       
@@ -315,7 +298,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2024年1月6日</div>
+          <div>2024年2月4日</div>
         </div>
       
       
@@ -347,9 +330,9 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2024/01/07/AcwingBasicCourse/6/" title="6. 区间和（离散化）">
+                      <a href="/2024/02/04/AcwingBasicCourse/dp4/" title="23. 计数类DP">
                         <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">6. 区间和（离散化）</span>
+                        <span class="hidden-mobile">23. 计数类DP</span>
                         <span class="visible-mobile">上一篇</span>
                       </a>
                     
@@ -357,8 +340,8 @@
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2024/01/06/AcwingBasicCourse/4/" title="4. QUICKSORT">
-                        <span class="hidden-mobile">4. QUICKSORT</span>
+                      <a href="/2024/02/02/AcwingBasicCourse/dp2/" title="23. 线性DP">
+                        <span class="hidden-mobile">23. 线性DP</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
