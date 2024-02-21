@@ -16,21 +16,21 @@
   <meta name="author" content="tianfang">
   <meta name="keywords" content="">
   
-    <meta name="description" content="若一些数可以分为两个连续的部分，满足性质的部分和不满足性质部分，则我们称这些数具有二段性，那么我们就可以进行二分搜索。 对于一个升序或降序的数组，该数组必然满足二段性。例如，1 2 2 3 3 5 问题1: 在一个升序数列中，如何得到某个数的开始位置 升序数列必然可以分为两个部分，左边是不满足性质（不满足大于等于x），右边是满足性质（大于等于x的）。那么我们可以用整数二分得到满足性质的起始位置。但">
+    <meta name="description" content="整数二分若一些数可以分为两个连续的部分，满足性质的部分和不满足性质部分，则我们称这些数具有二段性，那么我们就可以进行二分搜索。 对于一个升序或降序的数组，该数组必然满足二段性。例如，1 2 2 3 3 5 问题1: 在一个升序数列中，如何得到某个数的开始位置 升序数列必然可以分为两个部分，左边是不满足性质（不满足大于等于x），右边是满足性质（大于等于x的）。那么我们可以用整数二分得到满足性质的起始">
 <meta property="og:type" content="article">
-<meta property="og:title" content="1. 整数二分">
+<meta property="og:title" content="1. 二分">
 <meta property="og:url" content="http://example.com/2024/01/06/AcwingBasicCourse/1/index.html">
 <meta property="og:site_name" content="tianfang&#39;s blog">
-<meta property="og:description" content="若一些数可以分为两个连续的部分，满足性质的部分和不满足性质部分，则我们称这些数具有二段性，那么我们就可以进行二分搜索。 对于一个升序或降序的数组，该数组必然满足二段性。例如，1 2 2 3 3 5 问题1: 在一个升序数列中，如何得到某个数的开始位置 升序数列必然可以分为两个部分，左边是不满足性质（不满足大于等于x），右边是满足性质（大于等于x的）。那么我们可以用整数二分得到满足性质的起始位置。但">
+<meta property="og:description" content="整数二分若一些数可以分为两个连续的部分，满足性质的部分和不满足性质部分，则我们称这些数具有二段性，那么我们就可以进行二分搜索。 对于一个升序或降序的数组，该数组必然满足二段性。例如，1 2 2 3 3 5 问题1: 在一个升序数列中，如何得到某个数的开始位置 升序数列必然可以分为两个部分，左边是不满足性质（不满足大于等于x），右边是满足性质（大于等于x的）。那么我们可以用整数二分得到满足性质的起始">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2024-01-05T16:51:06.442Z">
-<meta property="article:modified_time" content="2024-01-07T01:09:33.605Z">
+<meta property="article:modified_time" content="2024-02-20T06:12:13.674Z">
 <meta property="article:author" content="tianfang">
 <meta name="twitter:card" content="summary_large_image">
   
   
   
-  <title>1. 整数二分 - tianfang&#39;s blog</title>
+  <title>1. 二分 - tianfang&#39;s blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -188,7 +188,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="1. 整数二分"></span>
+            <span id="subtitle" data-typed-text="1. 二分"></span>
           
         </div>
 
@@ -211,7 +211,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          699 字
+          839 字
         
       </span>
     
@@ -222,7 +222,7 @@
         
         
         
-          6 分钟
+          7 分钟
         
       </span>
     
@@ -259,12 +259,12 @@
       <div class="container nopadding-x-md" id="board-ctn">
         <div id="board">
           <article class="post-content mx-auto">
-            <h1 id="seo-header">1. 整数二分</h1>
+            <h1 id="seo-header">1. 二分</h1>
             
             
               <div class="markdown-body">
                 
-                <p>若一些数可以分为两个连续的部分，满足性质的部分和不满足性质部分，则我们称这些数具有二段性，那么我们就可以进行二分搜索。</p>
+                <h2 id="整数二分"><a href="#整数二分" class="headerlink" title="整数二分"></a>整数二分</h2><p>若一些数可以分为两个连续的部分，满足性质的部分和不满足性质部分，则我们称这些数具有二段性，那么我们就可以进行二分搜索。</p>
 <p>对于一个升序或降序的数组，该数组必然满足二段性。例如，1 2 2 3 3 5</p>
 <p><strong>问题1: 在一个升序数列中，如何得到某个数的开始位置</strong></p>
 <p>升序数列必然可以分为两个部分，左边是不满足性质（不满足大于等于x），右边是满足性质（大于等于x的）。那么我们可以用整数二分得到满足性质的起始位置。但此时我们必不知道区间的边界在哪里。我们取middle，若它满足性质，则右边区间起始位置至少到m，即右边区间起始位置必然在在[l, m]，若为不满足性质，则可以知道不满足区间的部分的右边位置至少到m，现在则其要右边区间的起始位置不可能在[l,m]上，必然在[m+1, r]上。直到l &gt; r，此时l = r。</p>
@@ -276,6 +276,9 @@
 <p>若middle = (l + r) / 2，则对于数组 2 2，一开始l=0,m=0，而位置0的元素满足性质，则执行语句l=m，这样相当于没操作，接着下一步循环，故会导致死循环。</p>
 <p><strong>注意2: 二分一定有答案。</strong></p>
 <p>无论数列中是否存在解，二分都会返回一个可访问的下标位置，若该下标位置的元素不满足，则数列中不存在解。</p>
+<h2 id="浮点数二分"><a href="#浮点数二分" class="headerlink" title="浮点数二分"></a>浮点数二分</h2><p><strong>问题：给定一个浮点数n，求它的三次方根，结果保留6位小数。</strong><br>实际上这道题可以这样做，求解区间<script type="math/tex">[l,r]</script>包含三次方根，并且区间长度足够短。一开始弄一个比较大的区间<script type="math/tex">[l,r]</script>使得包含三次方根，并不断缩小区间，直到区间长度达到要求为止。那么如何缩小呢？<br>取区间的<script type="math/tex">middle</script>。若<script type="math/tex">middle^3>=n</script>，那么说明这个解必然在[l, m]之间。若<script type="math/tex">middle^3<n</script>，那么说明这个解必然在[m, r]之间。</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><code class="hljs c++"><span class="hljs-type">double</span> l = <span class="hljs-number">-1000</span>;<br><span class="hljs-type">double</span> r = <span class="hljs-number">1000</span>;<br><span class="hljs-type">double</span> m;<br><br><span class="hljs-keyword">while</span>(r - l &gt;= <span class="hljs-number">1e-8</span>) &#123;<br>    m = (l + r) / <span class="hljs-number">2</span>;<br><br>    <span class="hljs-keyword">if</span>(<span class="hljs-built_in">pow</span>(m, <span class="hljs-number">3</span>) &gt;= n) &#123;<br>        r = m;<br>    &#125; <span class="hljs-keyword">else</span> &#123;<br>        l = m;<br>    &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+<p><strong>注意：输出请用printf</strong></p>
 
                 
               </div>
@@ -293,7 +296,7 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>1. 整数二分</div>
+      <div>1. 二分</div>
       <div>http://example.com/2024/01/06/AcwingBasicCourse/1/</div>
     </div>
     <div class="license-meta">
@@ -610,20 +613,5 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>

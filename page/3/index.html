@@ -216,6 +216,72 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
+        <a href="/2024/01/07/AcwingBasicCourse/15/" target="_self">
+          15. 哈希表
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/AcwingBasicCourse/15/" target="_self">
+        <div>
+          哈希表一种搜索，查询，删除操作时间复杂度为 O(N) 的表，但遍历，找最大值的操作实现时间复杂度较高。 哈希函数普通表需要遍历搜索才能知道元素的位置。但哈希表可以用哈希函数通过key算出下标位置。在理想的情况下，哈希表的查找存储删除效率达到O（1）。但是较多的情况映射到更少种可能的下标位置，必然会出现不同key出现同一个hash值的情况，称哈希冲突，那么如何解决哈希冲突呢？ 首先一定要选择一个好的
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-07 10:10" pubdate>
+              2024-01-07
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/01/07/AcwingBasicCourse/14/" target="_self">
+          14. 字典树（Trie）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/07/AcwingBasicCourse/14/" target="_self">
+        <div>
+          Trie树，即字典树，又称单词查找树或键树，经常应用是用于统计和排序大量的字符串。  字典树，从根节点到某一节点，路径上经过的字符连接起来，为该节点对应的字符串。除根节点外，每一个节点的位置代表了一个字符串。用数组实现，它的数据存储这样的，0为根节点的位置，next[i][c - ‘a’] 为位置为i的节点的字符c边的节点位置，若为0，则没有这个节点。cnt为该节点字符串出现次数，index为可用
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-01-07 10:10" pubdate>
+              2024-01-07
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
         <a href="/2024/01/07/AcwingBasicCourse/13/" target="_self">
           13. kmp
         </a>
@@ -474,72 +540,6 @@
     </article>
   </div>
 
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/06/AcwingBasicCourse/3/" target="_self">
-          3. 前缀和与差分
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/06/AcwingBasicCourse/3/" target="_self">
-        <div>
-          问题1：输入一个长度为n的整数序列。接下来再输入m个询问，每个询问输入一对l,r。对于每个询问，输出原序列中从第l个数到第r个数的和。 如果直接暴力求解，注意到在m次查询中，会对某些元素进行重复的求和。 不妨构造前缀和数组 presum[n] = nums[1]+nums[2]+…+nums[n]，第l个数到第r个数的和可化为presum[r] - presum[l-1]。那么问题的求解就有两个步
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-06 00:52" pubdate>
-              2024-01-06
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/01/06/AcwingBasicCourse/4/" target="_self">
-          4. QUICKSORT
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/06/AcwingBasicCourse/4/" target="_self">
-        <div>
-          若一些数可以分为两个连续的部分，满足性质的部分和不满足性质部分，则我们称这些数具有二段性，那么我们就可以进行二分搜索。
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-06 00:52" pubdate>
-              2024-01-06
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
 
 
   <nav aria-label="navigation">
@@ -665,20 +665,5 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
