@@ -69,7 +69,7 @@
 
 
   
-<meta name="generator" content="Hexo 6.3.0"></head>
+<meta name="generator" content="Hexo 7.1.1"></head>
 
 
 <body>
@@ -216,244 +216,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/02/21/AcwingBasicCourse/greedy3/" target="_self">
-          19. 贪心（三）
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/21/AcwingBasicCourse/greedy3/" target="_self">
-        <div>
-          货仓选址题目描述在一条数轴上有N家商店，它们的坐标分别为A_{1}∼A_{N}。现在需要在数轴上建立一家货仓，每天清晨，从货仓到每家商店都要运送一车商品。为了提高效率，求把货仓建在何处，可以使得货仓到每家商店的距离之和最小。 求解假如有两个商店A_{1},A_{2}，那么距离就是|A_{1}-S|+|A_{2}-S|，必然满足下面关系 |A_{2}-A_{1}|\le |A_{1}-S|+|A_{
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-21 01:38" pubdate>
-              2024-02-21
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/02/20/AcwingBasicCourse/greedy2/" target="_self">
-          19. 贪心（二）
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/20/AcwingBasicCourse/greedy2/" target="_self">
-        <div>
-          排队打水题目描述有n个人排队到1个水龙头处打水，第i个人装满水桶所需的时间是t_{i}，请问如何安排他们的打水顺序才能使所有人的等待时间之和最小？ 求解根据打水时间从小到大选择人去打水，得到的等待时间之和最小。假设一个方案选择t_{1},t_{2},t_{3},...,t_{i},t_{i+1},...,t_{n}，等待时间之和为sum=(n-1)t_{1}+(n-2)t_{2}+...+(n-i
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-20 21:48" pubdate>
-              2024-02-20
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/02/18/AcwingBasicCourse/dp6/" target="_self">
-          25. 记忆化搜索DP
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/18/AcwingBasicCourse/dp6/" target="_self">
-        <div>
-          题目：没有上司的舞会问题描述 解决方案设dp[i][0]为只考虑i号职员及其它的下属，不选i号职员的最大快乐值，设dp[i][1]为只考虑i号职员及其它的下属，选i号职员的最大快乐值。  如果不选i号职员，那么可以选它的直接下属，也可以不选它的直接下属。 如果选i号职员，那么不可以选它的直接下属。  得出公式  \begin{align*}   & dp[i][0]=\sum_{j=1}^{c}m
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-18 11:31" pubdate>
-              2024-02-18
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/02/18/AcwingBasicCourse/dp5/" target="_self">
-          24. 状态压缩dp
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/18/AcwingBasicCourse/dp5/" target="_self">
-        <div>
-          题目问题描述 解决方案由于横放方案=所有方案，因此只要考虑横放方案。定义dp[i][j]为已经放置好前i-1列，j的二进制表示形式代表了第i列的摆放情况。如果位等于1，则表示该处横放，并向下一列延伸。如果位等于0，表示竖着放或上一列的延伸。已经考虑好第i-1列的摆放，想要将第i列的摆放成j状态，那么就要考虑是否会与第i-1列与第i列冲突dp[i-1]设i-1列状态为k，i列状态为j  不能有重叠的
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-18 11:31" pubdate>
-              2024-02-18
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/02/04/AcwingBasicCourse/dp4/" target="_self">
-          23. 计数类DP
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/04/AcwingBasicCourse/dp4/" target="_self">
-        <div>
-          题目问题描述一个正整数n可以表示成若干个正整数之和，形如：n=n_{1}+n_{2}+…+n_{k}，其中 n_{1} \ge … \ge n_{k},k≥1。我们将这样的一种表示称为正整数n的一种划分。现在给定一个正整数n，请你求出n共有多少种不同的划分方法。 完全背包解法有n种物品，1,2,…,n，有无限件可以用，容量为n，有多少种组合方案。容易得到状态转移方程： dp[i][j] = \su
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-04 18:52" pubdate>
-              2024-02-04
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/02/04/AcwingBasicCourse/dp3/" target="_self">
-          23. 区间DP
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/04/AcwingBasicCourse/dp3/" target="_self">
-        <div>
-          石子合并问题描述设有 N堆石子排成一排，其编号为 1,2,3,…,N。每堆石子有一定的质量，可以用一个整数来描述，现在要将这 N堆石子合并成为一堆。每次只能合并相邻的两堆，合并的代价为这两堆石子的质量之和，合并后与这两堆石子相邻的石子将和新堆相邻，合并时由于选择的顺序不同，合并的总代价也不相同。 解决方案定义dp[i][j]为什么合并从i到j的所有石子的最小代价,最后一步是合并两堆石子，加起来就是
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-04 18:45" pubdate>
-              2024-02-04
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/02/02/AcwingBasicCourse/dp2/" target="_self">
-          23. 线性DP
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/02/AcwingBasicCourse/dp2/" target="_self">
-        <div>
-          数字三角形题目描述给定一个如下图所示的数字三角形，从顶部出发，在每一结点可以选择移动至其左下方的结点或移动至其右下方的结点，一直走到底层，要求找出一条路径，使路径上的数字的和最大。12345        7      3   8    8   1   0  2   7   4   44   5   2   6   5 解决方案定义dp[i][j]为从顶点走到位置(i,j)的最大和，容易推出递推公
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-02 20:39" pubdate>
-              2024-02-02
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/02/02/AcwingBasicCourse/math4/" target="_self">
+        <a href="/2024/04/08/AcwingBasicCourse/math4/" target="_self">
           19. 扩展欧几里得算法
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/02/AcwingBasicCourse/math4/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/AcwingBasicCourse/math4/" target="_self">
         <div>
           
         </div>
@@ -463,8 +232,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-02 20:23" pubdate>
-              2024-02-02
+            <time datetime="2024-04-08 11:03" pubdate>
+              2024-04-08
             </time>
           </div>
         
@@ -480,15 +249,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/02/02/AcwingBasicCourse/23/" target="_self">
-          23. 二分图
+        <a href="/2024/04/08/AcwingBasicCourse/math3/" target="_self">
+          20. 欧拉函数
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/02/02/AcwingBasicCourse/23/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/AcwingBasicCourse/math3/" target="_self">
         <div>
-          定义如果一个图可被分为两个顶点集合A和B，并且对于图的每一条边，边连接的两个顶点分别属于不同的集合，那么该图是二分图。 染色法判定染色法是将图的每一个顶点染上颜色，并且确保边所连接的顶点颜色不同，如果成功，则说明为二分图。具体步骤如下  选择起始顶点，染上颜色1 染它的相邻顶点，染上颜色2（与颜色1不同） 接着对相邻顶点的未染色进行染色  若此过程发现，该相邻顶点已染色，并且颜色相同，则无法染色成
+          欧拉函数 欧拉函数，是1到n与它互质的数的个数，记作\[\varphi(n) \]。例如\[\varphi(9) = 6 \] 因为\[1,2,4,5,7,8\]与\[9\]互质。 ### 性质1 \[\varphi(p^k)=p^k-p^{k-1}\] 对于质数\[p\]，\[p^k\]中不与它互质的数有\[p,2p,3p,4p,..,p^{k-1} \times p\]，也就是\[p^{k
         </div>
       </a>
 
@@ -496,8 +265,8 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-02-02 15:54" pubdate>
-              2024-02-02
+            <time datetime="2024-04-08 11:03" pubdate>
+              2024-04-08
             </time>
           </div>
         
@@ -513,15 +282,15 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/01/30/AcwingBasicCourse/22/" target="_self">
-          23. 图的最短路径
+        <a href="/2024/04/08/AcwingBasicCourse/math2/" target="_self">
+          19. 约数
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/01/30/AcwingBasicCourse/22/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/AcwingBasicCourse/math2/" target="_self">
         <div>
-          Dijkstra求最短路介绍Dijkstra算法是以起始点一层层向外拓展，像bfs。实现步骤如下  选起点，对起点做松弛操作，再次选一个离起点最近的点 再进行松弛操作，不断反复，每次选离起点最近的点，但未被进行松弛操作的点  实际上离起点最近且未被进行松弛操作的点，是进行松弛操作所产生点的最小距离那个点。基于此，我们有朴素的代码12345678910111213141516171819202122
+          求约数 求正整数a的所有约数，可以从1到a一个个遍历，看是不是它的因子。但前面我们已知道出现一个因子\[i\]，必然存在对应的另外一个因子\[\frac{a}{i}\]，易得只要遍历1到\[\sqrt{a}\]，就相当于遍历1到\[a\]。 同时需要注意的是，如果到\[\sqrt{a}\]是它的因子，要规定只push一次 代码如下 12345678910111213141516vector
         </div>
       </a>
 
@@ -529,8 +298,239 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-01-30 17:05" pubdate>
-              2024-01-30
+            <time datetime="2024-04-08 11:03" pubdate>
+              2024-04-08
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/04/08/AcwingBasicCourse/greedy3/" target="_self">
+          19. 贪心（三）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/AcwingBasicCourse/greedy3/" target="_self">
+        <div>
+          货仓选址 题目描述 在一条数轴上有\[N\]家商店，它们的坐标分别为\[A_{1}∼A_{N}\]。现在需要在数轴上建立一家货仓，每天清晨，从货仓到每家商店都要运送一车商品。为了提高效率，求把货仓建在何处，可以使得货仓到每家商店的距离之和最小。 ### 求解 假如有两个商店\[A_{1},A_{2}\]，那么距离就是\[|A_{1}-S|+|A_{2}-S|\]，必然满足下面关系 \[|A
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-04-08 11:03" pubdate>
+              2024-04-08
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/04/08/AcwingBasicCourse/math1/" target="_self">
+          18. 质数
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/AcwingBasicCourse/math1/" target="_self">
+        <div>
+          质数是指只有2个因子并且大于或等于2的数 判断一个数是否为质数 暴力做法 遍历2到x-1的每一个数，看这些数是否是它的因子，即判断是否能够整除，如果碰到能整除的数，则不是质数。如果都不能整除，则是质数。 12345678910111213bool isPrime(int x) &#123;    if(x == 1) &#123;        return false;    &#125
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-04-08 11:03" pubdate>
+              2024-04-08
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/04/08/AcwingBasicCourse/greedy2/" target="_self">
+          19. 贪心（二）
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/AcwingBasicCourse/greedy2/" target="_self">
+        <div>
+          排队打水 题目描述 有\[n\]个人排队到\[1\]个水龙头处打水，第\[i\]个人装满水桶所需的时间是\[t_{i}\]，请问如何安排他们的打水顺序才能使所有人的等待时间之和最小？ ### 求解 根据打水时间从小到大选择人去打水，得到的等待时间之和最小。假设一个方案选择\[t_{1},t_{2},t_{3},...,t_{i},t_{i+1},...,t_{n}\]，等待时间之和为\[s
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-04-08 11:03" pubdate>
+              2024-04-08
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/04/08/AcwingBasicCourse/dp6/" target="_self">
+          25. 记忆化搜索DP
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/AcwingBasicCourse/dp6/" target="_self">
+        <div>
+          题目：没有上司的舞会 问题描述  ### 解决方案 设\[dp[i][0]\]为只考虑i号职员及其它的下属，不选i号职员的最大快乐值，设\[dp[i][1]\]为只考虑i号职员及其它的下属，选i号职员的最大快乐值。 1. 如果不选\[i\]号职员，那么可以选它的直接下属，也可以不选它的直接下属。 2. 如果选\[i\]号职员，那么不可以选它的直接下属。 得出公式 $$ \[\begin
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-04-08 11:03" pubdate>
+              2024-04-08
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/04/08/AcwingBasicCourse/dp5/" target="_self">
+          24. 状态压缩dp
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/AcwingBasicCourse/dp5/" target="_self">
+        <div>
+          题目 问题描述  ### 解决方案 由于横放方案=所有方案，因此只要考虑横放方案。定义\[dp[i][j]\]为已经放置好前\[i-1\]列，\[j\]的二进制表示形式代表了第\[i\]列的摆放情况。如果位等于\[1\]，则表示该处横放，并向下一列延伸。如果位等于\[0\]，表示竖着放或上一列的延伸。 已经考虑好第i-1列的摆放，想要将第i列的摆放成j状态，那么就要考虑是否会与第i-1列与
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-04-08 11:03" pubdate>
+              2024-04-08
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/04/08/AcwingBasicCourse/dp4/" target="_self">
+          23. 计数类DP
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/AcwingBasicCourse/dp4/" target="_self">
+        <div>
+          题目 问题描述 一个正整数\[n\]可以表示成若干个正整数之和，形如：\[n=n_{1}+n_{2}+…+n_{k}\]，其中 \[n_{1} \ge … \ge n_{k}\],\[k≥1\]。我们将这样的一种表示称为正整数\[n\]的一种划分。现在给定一个正整数\[n\]，请你求出\[n\]共有多少种不同的划分方法。 ### 完全背包解法 有n种物品，1,2,...,n，有无限件可以用
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-04-08 11:03" pubdate>
+              2024-04-08
+            </time>
+          </div>
+        
+        
+        
+      </div>
+    </article>
+  </div>
+
+  <div class="row mx-auto index-card">
+    
+    
+    <article class="col-12 col-md-12 mx-auto index-info">
+      <h2 class="index-header">
+        
+        <a href="/2024/04/08/AcwingBasicCourse/dp3/" target="_self">
+          23. 区间DP
+        </a>
+      </h2>
+
+      
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/AcwingBasicCourse/dp3/" target="_self">
+        <div>
+          测试 ## 石子合并 ### 问题描述 设有 N堆石子排成一排，其编号为 1,2,3,…,N。每堆石子有一定的质量，可以用一个整数来描述，现在要将这 N堆石子合并成为一堆。每次只能合并相邻的两堆，合并的代价为这两堆石子的质量之和，合并后与这两堆石子相邻的石子将和新堆相邻，合并时由于选择的顺序不同，合并的总代价也不相同。 ### 解决方案 定义\[dp[i][j]\]为什么合并从i到j的所有石
+        </div>
+      </a>
+
+      <div class="index-btm post-metas">
+        
+          <div class="post-meta mr-3">
+            <i class="iconfont icon-date"></i>
+            <time datetime="2024-04-08 11:03" pubdate>
+              2024-04-08
             </time>
           </div>
         
@@ -665,20 +665,5 @@
   <noscript>
     <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
   </noscript>
-<script type="text/x-mathjax-config">
-    MathJax.Hub.Config({
-        tex2jax: {
-            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
-            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
-            processEscapes: true
-        }
-    });
-    MathJax.Hub.Queue(function() {
-        var all = MathJax.Hub.getAllJax();
-        for (var i = 0; i < all.length; ++i)
-            all[i].SourceElement().parentNode.className += ' has-jax';
-    });
-</script>
-<script src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 </body>
 </html>
