@@ -69,7 +69,7 @@
 
 
   
-<meta name="generator" content="Hexo 7.1.1"></head>
+<meta name="generator" content="Hexo 7.2.0"></head>
 
 
 <body>
@@ -216,211 +216,13 @@
     <article class="col-12 col-md-12 mx-auto index-info">
       <h2 class="index-header">
         
-        <a href="/2024/04/08/AcwingBasicCourse/math4/" target="_self">
-          19. 扩展欧几里得算法
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/AcwingBasicCourse/math4/" target="_self">
-        <div>
-          
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-08 11:03" pubdate>
-              2024-04-08
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/04/08/AcwingBasicCourse/math3/" target="_self">
-          20. 欧拉函数
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/AcwingBasicCourse/math3/" target="_self">
-        <div>
-          欧拉函数 欧拉函数，是1到n与它互质的数的个数，记作\[\varphi(n) \]。例如\[\varphi(9) = 6 \] 因为\[1,2,4,5,7,8\]与\[9\]互质。 ### 性质1 \[\varphi(p^k)=p^k-p^{k-1}\] 对于质数\[p\]，\[p^k\]中不与它互质的数有\[p,2p,3p,4p,..,p^{k-1} \times p\]，也就是\[p^{k
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-08 11:03" pubdate>
-              2024-04-08
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/04/08/AcwingBasicCourse/math2/" target="_self">
-          19. 约数
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/AcwingBasicCourse/math2/" target="_self">
-        <div>
-          求约数 求正整数a的所有约数，可以从1到a一个个遍历，看是不是它的因子。但前面我们已知道出现一个因子\[i\]，必然存在对应的另外一个因子\[\frac{a}{i}\]，易得只要遍历1到\[\sqrt{a}\]，就相当于遍历1到\[a\]。 同时需要注意的是，如果到\[\sqrt{a}\]是它的因子，要规定只push一次 代码如下 12345678910111213141516vector
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-08 11:03" pubdate>
-              2024-04-08
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/04/08/AcwingBasicCourse/greedy3/" target="_self">
-          19. 贪心（三）
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/AcwingBasicCourse/greedy3/" target="_self">
-        <div>
-          货仓选址 题目描述 在一条数轴上有\[N\]家商店，它们的坐标分别为\[A_{1}∼A_{N}\]。现在需要在数轴上建立一家货仓，每天清晨，从货仓到每家商店都要运送一车商品。为了提高效率，求把货仓建在何处，可以使得货仓到每家商店的距离之和最小。 ### 求解 假如有两个商店\[A_{1},A_{2}\]，那么距离就是\[|A_{1}-S|+|A_{2}-S|\]，必然满足下面关系 \[|A
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-08 11:03" pubdate>
-              2024-04-08
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/04/08/AcwingBasicCourse/math1/" target="_self">
-          18. 质数
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/AcwingBasicCourse/math1/" target="_self">
-        <div>
-          质数是指只有2个因子并且大于或等于2的数 判断一个数是否为质数 暴力做法 遍历2到x-1的每一个数，看这些数是否是它的因子，即判断是否能够整除，如果碰到能整除的数，则不是质数。如果都不能整除，则是质数。 12345678910111213bool isPrime(int x) &#123;    if(x == 1) &#123;        return false;    &#125
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-08 11:03" pubdate>
-              2024-04-08
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/04/08/AcwingBasicCourse/greedy2/" target="_self">
-          19. 贪心（二）
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/AcwingBasicCourse/greedy2/" target="_self">
-        <div>
-          排队打水 题目描述 有\[n\]个人排队到\[1\]个水龙头处打水，第\[i\]个人装满水桶所需的时间是\[t_{i}\]，请问如何安排他们的打水顺序才能使所有人的等待时间之和最小？ ### 求解 根据打水时间从小到大选择人去打水，得到的等待时间之和最小。假设一个方案选择\[t_{1},t_{2},t_{3},...,t_{i},t_{i+1},...,t_{n}\]，等待时间之和为\[s
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-08 11:03" pubdate>
-              2024-04-08
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/04/08/AcwingBasicCourse/dp6/" target="_self">
+        <a href="/2024/04/08/hello-world/" target="_self">
           25. 记忆化搜索DP
         </a>
       </h2>
 
       
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/AcwingBasicCourse/dp6/" target="_self">
+      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/hello-world/" target="_self">
         <div>
           题目：没有上司的舞会 问题描述  ### 解决方案 设\[dp[i][0]\]为只考虑i号职员及其它的下属，不选i号职员的最大快乐值，设\[dp[i][1]\]为只考虑i号职员及其它的下属，选i号职员的最大快乐值。 1. 如果不选\[i\]号职员，那么可以选它的直接下属，也可以不选它的直接下属。 2. 如果选\[i\]号职员，那么不可以选它的直接下属。 得出公式 $$ \[\begin
         </div>
@@ -430,106 +232,7 @@
         
           <div class="post-meta mr-3">
             <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-08 11:03" pubdate>
-              2024-04-08
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/04/08/AcwingBasicCourse/dp5/" target="_self">
-          24. 状态压缩dp
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/AcwingBasicCourse/dp5/" target="_self">
-        <div>
-          题目 问题描述  ### 解决方案 由于横放方案=所有方案，因此只要考虑横放方案。定义\[dp[i][j]\]为已经放置好前\[i-1\]列，\[j\]的二进制表示形式代表了第\[i\]列的摆放情况。如果位等于\[1\]，则表示该处横放，并向下一列延伸。如果位等于\[0\]，表示竖着放或上一列的延伸。 已经考虑好第i-1列的摆放，想要将第i列的摆放成j状态，那么就要考虑是否会与第i-1列与
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-08 11:03" pubdate>
-              2024-04-08
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/04/08/AcwingBasicCourse/dp4/" target="_self">
-          23. 计数类DP
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/AcwingBasicCourse/dp4/" target="_self">
-        <div>
-          题目 问题描述 一个正整数\[n\]可以表示成若干个正整数之和，形如：\[n=n_{1}+n_{2}+…+n_{k}\]，其中 \[n_{1} \ge … \ge n_{k}\],\[k≥1\]。我们将这样的一种表示称为正整数\[n\]的一种划分。现在给定一个正整数\[n\]，请你求出\[n\]共有多少种不同的划分方法。 ### 完全背包解法 有n种物品，1,2,...,n，有无限件可以用
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-08 11:03" pubdate>
-              2024-04-08
-            </time>
-          </div>
-        
-        
-        
-      </div>
-    </article>
-  </div>
-
-  <div class="row mx-auto index-card">
-    
-    
-    <article class="col-12 col-md-12 mx-auto index-info">
-      <h2 class="index-header">
-        
-        <a href="/2024/04/08/AcwingBasicCourse/dp3/" target="_self">
-          23. 区间DP
-        </a>
-      </h2>
-
-      
-      <a class="index-excerpt index-excerpt__noimg" href="/2024/04/08/AcwingBasicCourse/dp3/" target="_self">
-        <div>
-          测试 ## 石子合并 ### 问题描述 设有 N堆石子排成一排，其编号为 1,2,3,…,N。每堆石子有一定的质量，可以用一个整数来描述，现在要将这 N堆石子合并成为一堆。每次只能合并相邻的两堆，合并的代价为这两堆石子的质量之和，合并后与这两堆石子相邻的石子将和新堆相邻，合并时由于选择的顺序不同，合并的总代价也不相同。 ### 解决方案 定义\[dp[i][j]\]为什么合并从i到j的所有石
-        </div>
-      </a>
-
-      <div class="index-btm post-metas">
-        
-          <div class="post-meta mr-3">
-            <i class="iconfont icon-date"></i>
-            <time datetime="2024-04-08 11:03" pubdate>
+            <time datetime="2024-04-08 10:57" pubdate>
               2024-04-08
             </time>
           </div>
@@ -541,12 +244,6 @@
   </div>
 
 
-
-  <nav aria-label="navigation">
-    <span class="pagination" id="pagination">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/#board">2</a><a class="page-number" href="/page/3/#board">3</a><a class="page-number" href="/page/4/#board">4</a><a class="extend next" rel="next" href="/page/2/#board"><i class="iconfont icon-arrowright"></i></a>
-    </span>
-  </nav>
 
 
 
