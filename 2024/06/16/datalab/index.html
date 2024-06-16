@@ -1,0 +1,732 @@
+
+
+<!DOCTYPE html>
+<html lang="zh-CN" >
+
+
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="apple-touch-icon" sizes="76x76" href="/img/fluid.png">
+  <link rel="icon" href="/img/fluid.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  
+  <meta name="theme-color" content="#2f4154">
+  <meta name="author" content="tianfangyixing">
+  <meta name="keywords" content="">
+  
+    <meta name="description" content="1. bitXor 功能：实现异或^ 可用操作符：~ &amp; 操作符最大数：14 根据离散数学可得 12x ^ y &#x3D; (x &amp; ~y) | (~x &amp; y)        &#x3D; ~(~(x &amp; ~y) &amp; ~(~x &amp; y))  2. tmin 功能：获得补码最小值 可用操作符： ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="CSAPP Lab-1：Data Lab">
+<meta property="og:url" content="http://example.com/2024/06/16/datalab/index.html">
+<meta property="og:site_name" content="tianfangyixing&#39;s blog">
+<meta property="og:description" content="1. bitXor 功能：实现异或^ 可用操作符：~ &amp; 操作符最大数：14 根据离散数学可得 12x ^ y &#x3D; (x &amp; ~y) | (~x &amp; y)        &#x3D; ~(~(x &amp; ~y) &amp; ~(~x &amp; y))  2. tmin 功能：获得补码最小值 可用操作符： ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2024-06-16T15:04:57.986Z">
+<meta property="article:modified_time" content="2024-06-16T15:41:50.668Z">
+<meta property="article:author" content="tianfangyixing">
+<meta name="twitter:card" content="summary_large_image">
+  
+  
+  
+  <title>CSAPP Lab-1：Data Lab - tianfangyixing&#39;s blog</title>
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
+
+
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/github-markdown-css/4.0.0/github-markdown.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/hint.css/2.7.0/hint.min.css" />
+
+  <link  rel="stylesheet" href="https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.css" />
+
+
+
+<!-- 主题依赖的图标库，不要自行修改 -->
+<!-- Do not modify the link that theme dependent icons -->
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1749284_hj8rtnfg7um.css">
+
+
+
+<link rel="stylesheet" href="//at.alicdn.com/t/font_1736178_lbnruvf0jn.css">
+
+
+<link  rel="stylesheet" href="/css/main.css" />
+
+
+  <link id="highlight-css" rel="stylesheet" href="/css/highlight.css" />
+  
+
+
+
+
+  <script id="fluid-configs">
+    var Fluid = window.Fluid || {};
+    Fluid.ctx = Object.assign({}, Fluid.ctx)
+    var CONFIG = {"hostname":"example.com","root":"/","version":"1.9.7","typing":{"enable":true,"typeSpeed":70,"cursorChar":"_","loop":false,"scope":[]},"anchorjs":{"enable":true,"element":"h1,h2,h3,h4,h5,h6","placement":"left","visible":"hover","icon":""},"progressbar":{"enable":true,"height_px":3,"color":"#29d","options":{"showSpinner":false,"trickleSpeed":100}},"code_language":{"enable":true,"default":"cpp"},"copy_btn":true,"image_caption":{"enable":true},"image_zoom":{"enable":true,"img_url_replace":["",""]},"toc":{"enable":true,"placement":"right","headingSelector":"h1,h2,h3,h4,h5,h6","collapseDepth":0},"lazyload":{"enable":true,"loading_img":"/img/loading.gif","onlypost":false,"offset_factor":2},"web_analytics":{"enable":false,"follow_dnt":true,"baidu":null,"google":{"measurement_id":null},"tencent":{"sid":null,"cid":null},"woyaola":null,"cnzz":null,"leancloud":{"app_id":null,"app_key":null,"server_url":null,"path":"window.location.pathname","ignore_local":false}},"search_path":"/local-search.xml","include_content_in_search":true};
+
+    if (CONFIG.web_analytics.follow_dnt) {
+      var dntVal = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+      Fluid.ctx.dnt = dntVal && (dntVal.startsWith('1') || dntVal.startsWith('yes') || dntVal.startsWith('on'));
+    }
+  </script>
+  <script  src="/js/utils.js" ></script>
+  <script  src="/js/color-schema.js" ></script>
+  
+
+
+  
+<meta name="generator" content="Hexo 7.2.0"></head>
+
+
+<body>
+  
+
+  <header>
+    
+
+<div class="header-inner" style="height: 70vh;">
+  <nav id="navbar" class="navbar fixed-top  navbar-expand-lg navbar-dark scrolling-navbar">
+  <div class="container">
+    <a class="navbar-brand" href="/">
+      <strong>tianfangyixing&#39;s Blog</strong>
+    </a>
+
+    <button id="navbar-toggler-btn" class="navbar-toggler" type="button" data-toggle="collapse"
+            data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <div class="animated-icon"><span></span><span></span><span></span></div>
+    </button>
+
+    <!-- Collapsible content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ml-auto text-center">
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/" target="_self">
+                <i class="iconfont icon-home-fill"></i>
+                <span>首页</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/archives/" target="_self">
+                <i class="iconfont icon-archive-fill"></i>
+                <span>归档</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/categories/" target="_self">
+                <i class="iconfont icon-category-fill"></i>
+                <span>分类</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/tags/" target="_self">
+                <i class="iconfont icon-tags-fill"></i>
+                <span>标签</span>
+              </a>
+            </li>
+          
+        
+          
+          
+          
+          
+            <li class="nav-item">
+              <a class="nav-link" href="/about/" target="_self">
+                <i class="iconfont icon-user-fill"></i>
+                <span>关于</span>
+              </a>
+            </li>
+          
+        
+        
+          <li class="nav-item" id="search-btn">
+            <a class="nav-link" target="_self" href="javascript:;" data-toggle="modal" data-target="#modalSearch" aria-label="Search">
+              <i class="iconfont icon-search"></i>
+            </a>
+          </li>
+          
+        
+        
+      </ul>
+    </div>
+  </div>
+</nav>
+
+  
+
+<div id="banner" class="banner" parallax=true
+     style="background: url('/img/default.png') no-repeat center center; background-size: cover;">
+  <div class="full-bg-img">
+    <div class="mask flex-center" style="background-color: rgba(0, 0, 0, 0.3)">
+      <div class="banner-text text-center fade-in-up">
+        <div class="h2">
+          
+            <span id="subtitle" data-typed-text="CSAPP Lab-1：Data Lab"></span>
+          
+        </div>
+
+        
+          
+  <div class="mt-3">
+    
+    
+      <span class="post-meta">
+        <i class="iconfont icon-date-fill" aria-hidden="true"></i>
+        <time datetime="2024-06-16 23:04" pubdate>
+          2024年6月16日 晚上
+        </time>
+      </span>
+    
+  </div>
+
+  <div class="mt-1">
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-chart"></i>
+        
+          2.1k 字
+        
+      </span>
+    
+
+    
+      <span class="post-meta mr-2">
+        <i class="iconfont icon-clock-fill"></i>
+        
+        
+        
+          18 分钟
+        
+      </span>
+    
+
+    
+    
+  </div>
+
+
+        
+      </div>
+
+      
+    </div>
+  </div>
+</div>
+
+</div>
+
+  </header>
+
+  <main>
+    
+      
+
+<div class="container-fluid nopadding-x">
+  <div class="row nomargin-x">
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+
+    </div>
+
+    <div class="col-lg-8 nopadding-x-md">
+      <div class="container nopadding-x-md" id="board-ctn">
+        <div id="board">
+          <article class="post-content mx-auto">
+            <h1 id="seo-header">CSAPP Lab-1：Data Lab</h1>
+            
+            
+              <div class="markdown-body">
+                
+                <h3 id="bitxor">1. bitXor</h3>
+<p>功能：实现异或^ 可用操作符：~ &amp; 操作符最大数：14 根据离散数学可得
+<figure class="highlight llvm"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs llvm"><span class="hljs-keyword">x</span> ^ y <span class="hljs-operator">=</span> (<span class="hljs-keyword">x</span> &amp; ~y) | (~<span class="hljs-keyword">x</span> &amp; y)<br>        <span class="hljs-operator">=</span> ~(~(<span class="hljs-keyword">x</span> &amp; ~y) &amp; ~(~<span class="hljs-keyword">x</span> &amp; y)) <br></code></pre></td></tr></table></figure></p>
+<h3 id="tmin">2. tmin</h3>
+<p>功能：获得补码最小值 可用操作符： ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+操作符最大数：4 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">tmin</span><span class="hljs-params">(<span class="hljs-type">void</span>)</span> &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">31</span>;<br>&#125; <br></code></pre></td></tr></table></figure></p>
+<h3 id="istmax">3. isTmax</h3>
+<p>功能：判断是否是补码的最大值，是返回1，不是返回0 可用操作符： ! ~
+&amp; ^ | + 操作符最大数：10 Tmax +
+1会得到Tmin，也只有Tmax加1会得到Tmin。而Tmin具有很特殊的属性，就是它的加法逆元就是它自己，有这种属性只有两个，一个是0，一个是Tmin。
+因此，我们可以先判断x +
+1和(x+1)的加法逆元是否相同，如果相同，那么x+1只能是0或Tmin，再判断x+1是否是0即可其中求加法逆元。
+在具体实现中，求加法逆元可以用 ~x + 1，判断两个数是否相同可以这样做 !(x
+^ y) <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">isTmax</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>    <span class="hljs-type">const</span> <span class="hljs-type">int</span> plus1 = x + <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">return</span> !!(plus1) &amp; !(plus1 ^ (~plus1 + <span class="hljs-number">1</span>));<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<h3 id="alloddbits">4. allOddBits</h3>
+<p>功能：判断所有奇数位是否为1，是的符合1，不是返回0 可用操作符： ! ~
+&amp; ^ | + &lt;&lt; &gt;&gt; 操作符最大数：12
+将所有的偶数位设置为1，如果得到结果与-1相等，那么所有奇数位为1
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">allOddBits</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>    <span class="hljs-type">const</span> <span class="hljs-type">int</span> mask = <span class="hljs-number">0x55</span>;<br>    <span class="hljs-type">const</span> <span class="hljs-type">int</span> result = (x | mask) | (mask &lt;&lt; <span class="hljs-number">8</span>) | (mask &lt;&lt; <span class="hljs-number">16</span>) | (mask &lt;&lt; <span class="hljs-number">24</span>);<br>    <span class="hljs-keyword">return</span> !(result ^ (~<span class="hljs-number">0</span>));<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<h3 id="negate">5. negate</h3>
+<p>功能：获得-x，即x的加法逆元 可用操作符： ! ~ &amp; ^ | + &lt;&lt;
+&gt;&gt; 操作符最大数：5
+x加法逆元加上x的效果为第33位为1，其他位为0，容易想到~x+1是它的加法逆元
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">negate</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>    <span class="hljs-keyword">return</span> ~x + <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<h3 id="isasciidigit">6. isAsciiDigit</h3>
+<p>功能：判断一个32位整数是否满足 0x30 &lt;= x &lt;= 0x39 可用操作符： !
+~ &amp; ^ | + &lt;&lt; &gt;&gt; 操作符最大数：15</p>
+<p>先判断是否只有最低字节
+再判断最低字节减去0x30是否为非负数，0x39减去最低字节是否为非负数</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">isAsciiDigit</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>    <span class="hljs-type">const</span> <span class="hljs-type">int</span> byte = x &amp; <span class="hljs-number">0xFF</span>; <span class="hljs-comment">// 获得低位字节</span><br>    <span class="hljs-type">const</span> <span class="hljs-type">int</span> tmin = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">31</span>; <span class="hljs-comment">// 获得符号位，接下来要判断是否为负数</span><br>    <span class="hljs-keyword">return</span> !(byte ^ x) &amp; !(((byte + (~<span class="hljs-number">0x30</span> + <span class="hljs-number">1</span>)) | (<span class="hljs-number">0x39</span> + (~byte + <span class="hljs-number">1</span>))) &amp; tmin);<br>&#125;<br></code></pre></td></tr></table></figure>
+<h3 id="conditional">7. conditional</h3>
+<p>功能：实现 x ? y : z 可用操作符： ! ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+操作符最大数：16 我们容易想到可以用这样方式来实现 result = y * k + z *
+!k 但此时没法乘法，如何用可用操作符来实现乘1或乘0的操作呢，实际上 x * 1
+= x &amp; 0x11111111 = x &amp; (1 &lt;&lt; 31 &gt;&gt; 31) x * 0 = x
+&amp; 0x00000000 = x &amp; (0 &lt;&lt; 31 &gt;&gt; 31)
+此时右移是算数右移 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">conditional</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y, <span class="hljs-type">int</span> z)</span> &#123;<br>    <span class="hljs-type">int</span> flagN = !x;<br>    <span class="hljs-type">int</span> flag = !flagN;<br>    <span class="hljs-keyword">return</span> (y &amp; (flag &lt;&lt; <span class="hljs-number">31</span> &gt;&gt; <span class="hljs-number">31</span>)) +( z &amp; (flagN &lt;&lt; <span class="hljs-number">31</span> &gt;&gt; <span class="hljs-number">31</span>));<br>&#125;<br></code></pre></td></tr></table></figure> ### 8. isLessOrEqual 功能：判断
+x&lt;=y，如果满足，则返回1，否则，返回0 可用操作符： ! ~ &amp; ^ | +
+&lt;&lt; &gt;&gt; 操作符最大数：24
+问题可转换为y-x&gt;=0，显然要用加法逆元实现减法，转化为y+x'&gt;=0，
+要考虑两个问题，一个是如果x是Tmin，那么是否能够与y-x一样的效果
+一开始我以为不能，作了个特判，后来才发现效果等同
+当y&lt;0，两者得到的结果肯定就是符号位为0，大了2^(w-1)
+当y&gt;0，肯定溢出了，但是是否会与y-x有等同效果，显然原本符号位为0，现在
+为1，那么与溢出的结果同样小了2^(w-1)
+第二个要考虑，是否溢出，只有两种可能
+y&lt;0并且x&gt;=0，那么一定不满足x&lt;=y
+y&gt;=0并且x&lt;0，那么一定满足x&lt;=y 故写出代码 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">isLessOrEqual</span><span class="hljs-params">(<span class="hljs-type">int</span> x, <span class="hljs-type">int</span> y)</span> &#123;<br>    <span class="hljs-type">const</span> <span class="hljs-type">int</span> tmin = <span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">31</span>;<br>    <span class="hljs-type">const</span> <span class="hljs-type">int</span> isXNotNegative = !(x &amp; tmin);<br>    <span class="hljs-type">const</span> <span class="hljs-type">int</span> isYNotNegative = !(y &amp; tmin);<br>    <span class="hljs-keyword">return</span> (isYNotNegative &amp; !isXNotNegative) |<br>    (!(!isYNotNegative &amp; isXNotNegative) &amp;<br>    !( (y + (~x + <span class="hljs-number">1</span>)) &amp; tmin )<br>    );<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<h3 id="logicalneg">9. logicalNeg</h3>
+<p>功能：实现!x 可用操作符： ~ &amp; ^ | + &lt;&lt; &gt;&gt;
+操作符最大数：12
+联想到0有个特殊性质，相反数为它自己，并且有这个性质的只有Tmin和0.
+故看0的加法逆元符号位&amp;0为0，只有它一个，故写出代码 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">logicalNeg</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>  <span class="hljs-keyword">return</span> (~(x | (~x + <span class="hljs-number">1</span>)) &gt;&gt; <span class="hljs-number">31</span>) &amp; <span class="hljs-number">1</span>;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<h3 id="howmanybits">10. howManyBits</h3>
+<p>功能：返回用补码表示x最小需要多少位 可用操作符： ~ &amp; ^ ! | +
+&lt;&lt; &gt;&gt; 操作符最大数：90 写不出来啊。
+对于非负数，我们从右往左找到第一个1的位置，记为第u位（从低位数起），答案为u+1。对于负数，我们需要找到从左往右找到第一个0，等同于找～x的第一个1，答案为u+1。与正数相同
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">howManyBits</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>  <span class="hljs-type">int</span> b16,b8,b4,b2,b1,b0;<br>  <span class="hljs-type">int</span> flag = x &gt;&gt; <span class="hljs-number">31</span>;<br>  x = (x &amp; ~flag) | (~x &amp; flag);<br>  b16 = !!(x &gt;&gt; <span class="hljs-number">16</span>) &lt;&lt; <span class="hljs-number">4</span>;<br>  x &gt;&gt;= b16;<br>  b8 = !!(x &gt;&gt; <span class="hljs-number">8</span>) &lt;&lt; <span class="hljs-number">3</span>;<br>  x &gt;&gt;= b8;<br>  b4 = !!(x &gt;&gt; <span class="hljs-number">4</span>) &lt;&lt; <span class="hljs-number">2</span>;<br>  x &gt;&gt;= b4;<br>  b2 = !!(x &gt;&gt; <span class="hljs-number">2</span>) &lt;&lt; <span class="hljs-number">1</span>;<br>  x &gt;&gt;= b2;<br>  b1 = !!(x &gt;&gt; <span class="hljs-number">1</span>) &lt;&lt; <span class="hljs-number">0</span>;<br>  x &gt;&gt;= b1;<br>  b0 = !!(x);<br>  x &gt;&gt;= b1;<br>  <span class="hljs-keyword">return</span> <span class="hljs-number">1</span> + b0 + b1 + b2 + b4 + b8 + b16;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<h3 id="floatscale2">11. floatScale2</h3>
+<p>功能：返回 2*uf的位级表示，如果参数为NaN，直接返回uf 可用操作符：
+任何有符号和无符号整数操作，包括||和&amp;&amp;, while和if
+操作符最大数：30
+显然对于规格化数，只要exp加1即可。对于非规格化数，除了符号位位级表示直接乘2可得到正确结果。
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">unsigned</span> <span class="hljs-title function_">floatScale2</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> uf)</span> &#123;<br>  <span class="hljs-type">unsigned</span> <span class="hljs-built_in">exp</span> = (uf &gt;&gt; <span class="hljs-number">23</span>) &amp; <span class="hljs-number">0XFF</span>;<br>  <br>  <span class="hljs-keyword">if</span>(<span class="hljs-built_in">exp</span> == <span class="hljs-number">0XFF</span>) &#123;<br>    <span class="hljs-keyword">return</span> uf;<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-built_in">exp</span> != <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-built_in">exp</span>++;<br>    <br>    uf = uf &amp; ~(<span class="hljs-number">0xFF</span> &lt;&lt; <span class="hljs-number">23</span>);<br>    <br>    <span class="hljs-keyword">return</span> uf | (<span class="hljs-built_in">exp</span> &lt;&lt; <span class="hljs-number">23</span>);<br>  &#125;<span class="hljs-keyword">else</span>&#123;<br>    <span class="hljs-type">unsigned</span> sign = uf &amp; (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">31</span>);<br>    <span class="hljs-type">unsigned</span> exceptSign = uf &amp; ~sign;<br>    <br>    exceptSign = exceptSign &lt;&lt; <span class="hljs-number">1</span>;<br>    <span class="hljs-keyword">return</span> exceptSign | sign; <br>     <br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<h3 id="floatfloat2int">12. floatFloat2Int</h3>
+<p>功能：返回 (int) uf的位级表示，如果溢出以及NaN和INF，返回0x80000000
+可用操作符： 任何有符号和无符号整数操作，包括||和&amp;&amp;, while和if
+操作符最大数：30 首先判断是否是规格化数或者NaN或INF，返回相应的固定值。
+如果是规格化值，用 1.frac * 2 ^ E 计算，根据E右移或左移小数点
+获取a和sign和frac和E，其中a = (1 &lt;&lt; 23) | frac 对E分类讨论
+若E小于0，则返回0 若E大于等于0，并且小于等于30 若E大于30，则溢出
+其中有个特殊情况，就是int最小值，要移动小数点31位，但也只有它，所以
+可以做特殊处理
+难点在于如何移动小数点，我的思路是先去除变换后多余的小数位，再根据情况
+移动小数点 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-keyword">if</span>(E &lt; <span class="hljs-number">23</span>) &#123;<br>    a = a &gt;&gt; (<span class="hljs-number">23</span> - E);<br>    a = a &lt;&lt; E;<br>&#125; <span class="hljs-keyword">else</span> &#123;<br>    a = a &lt;&lt; (E - <span class="hljs-number">23</span>);<br>&#125;<br></code></pre></td></tr></table></figure>
+然后再根据sign的值，返回正值或负值。完整代码如下 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">int</span> <span class="hljs-title function_">floatFloat2Int</span><span class="hljs-params">(<span class="hljs-type">unsigned</span> uf)</span> &#123;<br>  <span class="hljs-type">unsigned</span> <span class="hljs-built_in">exp</span> = (uf &gt;&gt; <span class="hljs-number">23</span>) &amp; <span class="hljs-number">0XFF</span>;<br>  <span class="hljs-type">unsigned</span> outRange = <span class="hljs-number">0x80000000</span>;<br>  <span class="hljs-type">int</span> E;<br>  <span class="hljs-type">unsigned</span> frac,a,sign;<br>  <br>  <span class="hljs-keyword">if</span>(<span class="hljs-built_in">exp</span> == <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-built_in">exp</span> == <span class="hljs-number">0xFF</span>) &#123;<br>    <span class="hljs-keyword">return</span> outRange;<br>  &#125;<br><br>  E = <span class="hljs-built_in">exp</span> - <span class="hljs-number">127</span>;<br><br>  frac = (uf &lt;&lt; <span class="hljs-number">9</span>) &gt;&gt; <span class="hljs-number">9</span>;<br>  a = frac | (<span class="hljs-number">1</span> &lt;&lt; <span class="hljs-number">23</span>);<br>  sign = uf &gt;&gt; <span class="hljs-number">31</span>;<br><br>  <span class="hljs-keyword">if</span>(sign == <span class="hljs-number">1</span> &amp;&amp; E == <span class="hljs-number">31</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0x80000000</span>;<br>  &#125;<br><br>  <span class="hljs-keyword">if</span>(E &lt; <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(E &gt; <span class="hljs-number">30</span>) &#123;<br>    <span class="hljs-keyword">return</span> outRange;<br>  &#125;<br><br>  <span class="hljs-keyword">if</span>(E &lt; <span class="hljs-number">23</span>) &#123;<br>    a = a &gt;&gt; (<span class="hljs-number">23</span> - E);<br>    a = a &lt;&lt; E;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    a = a &lt;&lt; (E - <span class="hljs-number">23</span>);<br>  &#125;<br>  <br>  <span class="hljs-keyword">if</span>(sign == <span class="hljs-number">0</span>) &#123;<br>    <span class="hljs-keyword">return</span> a;<br>  &#125; <span class="hljs-keyword">else</span> &#123;<br>    <span class="hljs-keyword">return</span> ~a + <span class="hljs-number">1</span>;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<h3 id="floatpower2">13. floatPower2</h3>
+<p>功能：返回 2.0 ^ x
+的单精度浮点数的二进制表示，太小无法表示返回0，太大无法表示返回INF
+可用操作符： 任何有符号和无符号整数操作，包括||和&amp;&amp;, while和if
+操作符最大数：30
+先考虑规格化的数的表示范围，显然只能是小数部分为0，才能来表示2.0^x，
+也就是V=1.0*2^E，规格化的数的E表示范围为[-126,126]，也就是说表示范围为[2<sup>-126,2</sup>126]，对于x比126大的数，直接返回INF，对于在这个范围的x，用规格化的浮点数来1表示，若x比-126小，尝试用非规格化的数来表示
+考虑非规格化的数，E为-126，显然只能是小数部分的有且只有一位为1，才能表示2.0^x，范围为[2<sup>-148,2</sup>-127]
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><code class="hljs c"><span class="hljs-type">unsigned</span> <span class="hljs-title function_">floatPower2</span><span class="hljs-params">(<span class="hljs-type">int</span> x)</span> &#123;<br>  <span class="hljs-type">unsigned</span> INF = <span class="hljs-number">0x7F800000</span>;<br>  <span class="hljs-type">int</span> bias = <span class="hljs-number">127</span>;<br>  <span class="hljs-type">int</span> E,<span class="hljs-built_in">exp</span>;<br>  <br>  <span class="hljs-keyword">if</span>(x &gt; <span class="hljs-number">127</span>) &#123;<br>    <span class="hljs-keyword">return</span> INF;<br>  &#125; <span class="hljs-keyword">else</span> <span class="hljs-keyword">if</span>(<span class="hljs-number">-126</span> &lt;= x &amp;&amp; x &lt;= <span class="hljs-number">127</span>) &#123;<br>    E = x;<br>    <span class="hljs-built_in">exp</span> = E + bias;<br><br>    <span class="hljs-keyword">return</span> (<span class="hljs-built_in">exp</span> &lt;&lt; <span class="hljs-number">23</span>);<br>  &#125;<br><br>  <span class="hljs-keyword">if</span>(<span class="hljs-number">-148</span> &lt;= x &amp;&amp; x &lt;= <span class="hljs-number">-127</span>) &#123;<br>    <span class="hljs-type">int</span> w = x + <span class="hljs-number">148</span>;<br><br>    <span class="hljs-keyword">return</span> (<span class="hljs-number">1</span> &lt;&lt; w);<br>  &#125;<br><br>  <span class="hljs-keyword">return</span> <span class="hljs-number">0</span>;<br>&#125;<br></code></pre></td></tr></table></figure></p>
+<h3 id="关于time-out的问题">关于time out的问题</h3>
+<p>在测试floatPower2的时候超时了，更改了下btest.c的TIMEOUT_LIMIT然后重新构建就过了。</p>
+
+                
+              </div>
+            
+            <hr/>
+            <div>
+              <div class="post-metas my-3">
+  
+  
+</div>
+
+
+              
+  
+
+  <div class="license-box my-3">
+    <div class="license-title">
+      <div>CSAPP Lab-1：Data Lab</div>
+      <div>http://example.com/2024/06/16/datalab/</div>
+    </div>
+    <div class="license-meta">
+      
+        <div class="license-meta-item">
+          <div>作者</div>
+          <div>tianfangyixing</div>
+        </div>
+      
+      
+        <div class="license-meta-item license-meta-date">
+          <div>发布于</div>
+          <div>2024年6月16日</div>
+        </div>
+      
+      
+      
+        <div class="license-meta-item">
+          <div>许可协议</div>
+          <div>
+            
+              
+              
+                <a class="print-no-link" target="_blank" href="https://creativecommons.org/licenses/by/4.0/">
+                  <span class="hint--top hint--rounded" aria-label="BY - 署名">
+                    <i class="iconfont icon-by"></i>
+                  </span>
+                </a>
+              
+            
+          </div>
+        </div>
+      
+    </div>
+    <div class="license-icon iconfont"></div>
+  </div>
+
+
+
+              
+                <div class="post-prevnext my-3">
+                  <article class="post-prev col-6">
+                    
+                    
+                  </article>
+                  <article class="post-next col-6">
+                    
+                    
+                  </article>
+                </div>
+              
+            </div>
+
+            
+          </article>
+        </div>
+      </div>
+    </div>
+
+    <div class="side-col d-none d-lg-block col-lg-2">
+      
+  <aside class="sidebar" style="margin-left: -1rem">
+    <div id="toc">
+  <p class="toc-header">
+    <i class="iconfont icon-list"></i>
+    <span>目录</span>
+  </p>
+  <div class="toc-body" id="toc-body"></div>
+</div>
+
+
+
+  </aside>
+
+
+    </div>
+  </div>
+</div>
+
+
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+
+  
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+    
+
+    
+      <a id="scroll-top-button" aria-label="TOP" href="#" role="button">
+        <i class="iconfont icon-arrowup" aria-hidden="true"></i>
+      </a>
+    
+
+    
+      <div class="modal fade" id="modalSearch" tabindex="-1" role="dialog" aria-labelledby="ModalLabel"
+     aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">搜索</h4>
+        <button type="button" id="local-search-close" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body mx-3">
+        <div class="md-form mb-5">
+          <input type="text" id="local-search-input" class="form-control validate">
+          <label data-error="x" data-success="v" for="local-search-input">关键词</label>
+        </div>
+        <div class="list-group" id="local-search-result"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+    
+
+    
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+  
+    <div class="footer-content">
+       <a href="https://hexo.io" target="_blank" rel="nofollow noopener"><span>Hexo</span></a> <i class="iconfont icon-love"></i> <a href="https://github.com/fluid-dev/hexo-theme-fluid" target="_blank" rel="nofollow noopener"><span>Fluid</span></a> 
+    </div>
+  
+  
+  
+  
+</div>
+
+  </footer>
+
+  <!-- Scripts -->
+  
+  <script  src="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.js" ></script>
+  <link  rel="stylesheet" href="https://lib.baomitu.com/nprogress/0.2.0/nprogress.min.css" />
+
+  <script>
+    NProgress.configure({"showSpinner":false,"trickleSpeed":100})
+    NProgress.start()
+    window.addEventListener('load', function() {
+      NProgress.done();
+    })
+  </script>
+
+
+<script  src="https://lib.baomitu.com/jquery/3.6.4/jquery.min.js" ></script>
+<script  src="https://lib.baomitu.com/twitter-bootstrap/4.6.1/js/bootstrap.min.js" ></script>
+<script  src="/js/events.js" ></script>
+<script  src="/js/plugins.js" ></script>
+
+
+  <script  src="https://lib.baomitu.com/typed.js/2.0.12/typed.min.js" ></script>
+  <script>
+    (function (window, document) {
+      var typing = Fluid.plugins.typing;
+      var subtitle = document.getElementById('subtitle');
+      if (!subtitle || !typing) {
+        return;
+      }
+      var text = subtitle.getAttribute('data-typed-text');
+      
+        typing(text);
+      
+    })(window, document);
+  </script>
+
+
+
+
+  
+    <script  src="/js/img-lazyload.js" ></script>
+  
+
+
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/tocbot/4.20.1/tocbot.min.js', function() {
+    var toc = jQuery('#toc');
+    if (toc.length === 0 || !window.tocbot) { return; }
+    var boardCtn = jQuery('#board-ctn');
+    var boardTop = boardCtn.offset().top;
+
+    window.tocbot.init(Object.assign({
+      tocSelector     : '#toc-body',
+      contentSelector : '.markdown-body',
+      linkClass       : 'tocbot-link',
+      activeLinkClass : 'tocbot-active-link',
+      listClass       : 'tocbot-list',
+      isCollapsedClass: 'tocbot-is-collapsed',
+      collapsibleClass: 'tocbot-is-collapsible',
+      scrollSmooth    : true,
+      includeTitleTags: true,
+      headingsOffset  : -boardTop,
+    }, CONFIG.toc));
+    if (toc.find('.toc-list-item').length > 0) {
+      toc.css('visibility', 'visible');
+    }
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('tocbot' in window) {
+        tocbot.refresh();
+        var toc = jQuery('#toc');
+        if (toc.length === 0 || !tocbot) {
+          return;
+        }
+        if (toc.find('.toc-list-item').length > 0) {
+          toc.css('visibility', 'visible');
+        }
+      }
+    });
+  });
+</script>
+
+
+  <script src=https://lib.baomitu.com/clipboard.js/2.0.11/clipboard.min.js></script>
+
+  <script>Fluid.plugins.codeWidget();</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/anchor-js/4.3.1/anchor.min.js', function() {
+    window.anchors.options = {
+      placement: CONFIG.anchorjs.placement,
+      visible  : CONFIG.anchorjs.visible
+    };
+    if (CONFIG.anchorjs.icon) {
+      window.anchors.options.icon = CONFIG.anchorjs.icon;
+    }
+    var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+    var res = [];
+    for (var item of el) {
+      res.push('.markdown-body > ' + item.trim());
+    }
+    if (CONFIG.anchorjs.placement === 'left') {
+      window.anchors.options.class = 'anchorjs-link-left';
+    }
+    window.anchors.add(res.join(', '));
+
+    Fluid.events.registerRefreshCallback(function() {
+      if ('anchors' in window) {
+        anchors.removeAll();
+        var el = (CONFIG.anchorjs.element || 'h1,h2,h3,h4,h5,h6').split(',');
+        var res = [];
+        for (var item of el) {
+          res.push('.markdown-body > ' + item.trim());
+        }
+        if (CONFIG.anchorjs.placement === 'left') {
+          anchors.options.class = 'anchorjs-link-left';
+        }
+        anchors.add(res.join(', '));
+      }
+    });
+  });
+</script>
+
+
+  
+<script>
+  Fluid.utils.createScript('https://lib.baomitu.com/fancybox/3.5.7/jquery.fancybox.min.js', function() {
+    Fluid.plugins.fancyBox();
+  });
+</script>
+
+
+  <script>Fluid.plugins.imageCaption();</script>
+
+  
+      <script>
+        if (!window.MathJax) {
+          window.MathJax = {
+            tex    : {
+              inlineMath: { '[+]': [['$', '$']] }
+            },
+            loader : {
+              load: ['ui/lazy']
+            },
+            options: {
+              renderActions: {
+                insertedScript: [200, () => {
+                  document.querySelectorAll('mjx-container').forEach(node => {
+                    let target = node.parentNode;
+                    if (target.nodeName.toLowerCase() === 'li') {
+                      target.parentNode.classList.add('has-jax');
+                    }
+                  });
+                }, '', false]
+              }
+            }
+          };
+        } else {
+          MathJax.startup.document.state(0);
+          MathJax.texReset();
+          MathJax.typeset();
+          MathJax.typesetPromise();
+        }
+
+        Fluid.events.registerRefreshCallback(function() {
+          if ('MathJax' in window && MathJax.startup.document && typeof MathJax.startup.document.state === 'function') {
+            MathJax.startup.document.state(0);
+            MathJax.texReset();
+            MathJax.typeset();
+            MathJax.typesetPromise();
+          }
+        });
+      </script>
+    
+
+  <script  src="https://lib.baomitu.com/mathjax/3.2.2/es5/tex-mml-chtml.js" ></script>
+
+  <script  src="/js/local-search.js" ></script>
+
+
+
+
+
+<!-- 主题的启动项，将它保持在最底部 -->
+<!-- the boot of the theme, keep it at the bottom -->
+<script  src="/js/boot.js" ></script>
+
+
+  
+
+  <noscript>
+    <div class="noscript-warning">博客在允许 JavaScript 运行的环境下浏览效果更佳</div>
+  </noscript>
+</body>
+</html>
